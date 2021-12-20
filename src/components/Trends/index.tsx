@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import TrendItem from "./TrendItem"
 import styled from "styled-components/macro"
 import { useDispatch } from "react-redux"
 import { loadTrends } from "features/trends/trendsSlice"
@@ -7,6 +6,7 @@ import { useAppSelector } from "app/hooks"
 import Pagination from "components/UI/Pagination"
 import TrendPreloader from "components/Trends/TrendPreloader"
 import ErrorText from "components/UI/ErrorText"
+import TrendItem from "./TrendItem"
 
 const Trends = () => {
 	const dispatch = useDispatch()

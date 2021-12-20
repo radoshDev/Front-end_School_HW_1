@@ -12,14 +12,7 @@ type Props = {
 	hashtags: Hashtag[]
 }
 
-const Header = ({
-	image,
-	name,
-	nickname,
-	description,
-	verified,
-	hashtags,
-}: Props) => {
+const Header = ({ image, name, nickname, description, verified, hashtags }: Props) => {
 	return (
 		<S.Header>
 			<div className="avatar">

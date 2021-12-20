@@ -1,8 +1,8 @@
 import styled from "styled-components/macro"
 import Divider from "components/UI/Divider"
+import { TrendItem as TrendI } from "types/trendsTypes"
 import Header from "./Header"
 import Content from "./Content"
-import { TrendItem as TrendI } from "types/trendsTypes"
 
 type Props = {
 	data: TrendI

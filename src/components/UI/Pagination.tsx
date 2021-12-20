@@ -8,12 +8,7 @@ type Props = {
 	setActivePage: (page: number) => void
 }
 
-const Pagination: FC<Props> = ({
-	totalPages,
-	activePage,
-	setActivePage,
-	itemsPerPage = 5,
-}) => {
+const Pagination: FC<Props> = ({ totalPages, activePage, setActivePage, itemsPerPage = 5 }) => {
 	const [currentItems, setCurrentItems] = useState<number[]>([])
 	const [itemOffset, setItemOffset] = useState(0)
 	const items = useMemo(
@@ -31,13 +26,8 @@ const Pagination: FC<Props> = ({
 
 	// Invoke when user click to request another page.
 	const handlePageClick = (currentPage: number) => {
-		if (
-			currentPage === currentItems[currentItems?.length - 1] &&
-			currentPage >= itemsPerPage
-		) {
-			setItemOffset(p =>
-				p < totalPages - itemsPerPage ? p + 1 : totalPages - itemsPerPage
-			)
+		if (currentPage === currentItems[currentItems.length - 1] && currentPage >= itemsPerPage) {
+			setItemOffset(p => (p < totalPages - itemsPerPage ? p + 1 : totalPages - itemsPerPage))
 		}
 		if (currentPage === currentItems[0]) {
 			setItemOffset(p => (p > 0 ? p - 1 : 0))
@@ -65,9 +55,7 @@ const Pagination: FC<Props> = ({
 					{page}
 				</S.Btn>
 			))}
-			<S.Btn
-				className={activePage === totalPages ? "active" : ""}
-				onClick={handleNext}>
+			<S.Btn className={activePage === totalPages ? "active" : ""} onClick={handleNext}>
 				Next
 			</S.Btn>
 		</S.Pagination>

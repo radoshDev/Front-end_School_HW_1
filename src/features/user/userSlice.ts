@@ -1,19 +1,16 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { UserAPI } from "./userAPI"
 import { User, UserInfo } from "types/usersTypes"
 import { Trends } from "types/trendsTypes"
+import { UserAPI } from "./userAPI"
 
 export const authUser = createAsyncThunk("authUser", async () => {
 	const data = await UserAPI.auth()
 	return data
 })
-export const loadUserInfo = createAsyncThunk(
-	"loadUserInfo",
-	async (userId: string) => {
-		const data = await UserAPI.getInfo(userId)
-		return data
-	}
-)
+export const loadUserInfo = createAsyncThunk("loadUserInfo", async (userId: string) => {
+	const data = await UserAPI.getInfo(userId)
+	return data
+})
 
 export const loadUserFeed = createAsyncThunk("loadUserFeed", async () => {
 	const data = await UserAPI.getFeed()
@@ -55,7 +52,7 @@ const userSlice = createSlice({
 				state.auth.isLoading = false
 				state.auth.error = ""
 			})
-			.addCase(authUser.rejected, (state, action) => {
+			.addCase(authUser.rejected, state => {
 				state.auth.error = "Not authorized. Try again"
 				state.auth.isLoading = false
 			})
@@ -63,15 +60,12 @@ const userSlice = createSlice({
 				state.info.isLoading = true
 				state.info.error = ""
 			})
-			.addCase(
-				loadUserInfo.fulfilled,
-				(state, action: PayloadAction<UserInfo>) => {
-					state.info.data = action.payload
-					state.info.isLoading = false
-					state.info.error = ""
-				}
-			)
-			.addCase(loadUserInfo.rejected, (state, action) => {
+			.addCase(loadUserInfo.fulfilled, (state, action: PayloadAction<UserInfo>) => {
+				state.info.data = action.payload
+				state.info.isLoading = false
+				state.info.error = ""
+			})
+			.addCase(loadUserInfo.rejected, state => {
 				state.info.error = "Can't download user information"
 				state.info.isLoading = false
 			})
@@ -79,14 +73,11 @@ const userSlice = createSlice({
 				state.feed.isLoading = true
 				state.feed.error = ""
 			})
-			.addCase(
-				loadUserFeed.fulfilled,
-				(state, action: PayloadAction<Trends>) => {
-					state.feed.data = action.payload
-					state.feed.isLoading = false
-				}
-			)
-			.addCase(loadUserFeed.rejected, (state, action) => {
+			.addCase(loadUserFeed.fulfilled, (state, action: PayloadAction<Trends>) => {
+				state.feed.data = action.payload
+				state.feed.isLoading = false
+			})
+			.addCase(loadUserFeed.rejected, state => {
 				state.feed.error = "Download Videos Failed! Please retry later"
 				state.feed.isLoading = false
 			}),

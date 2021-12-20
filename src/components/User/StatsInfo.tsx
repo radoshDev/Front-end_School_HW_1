@@ -17,12 +17,10 @@ const StatsInfo: FC<Props> = ({ loading, data }) => {
 			) : (
 				<>
 					<div>
-						<span className="bold">{kFormatter(data?.followingCount)}</span>{" "}
-						Following
+						<span className="bold">{kFormatter(data?.followingCount)}</span> Following
 					</div>
 					<div>
-						<span className="bold">{kFormatter(data?.followerCount)}</span>{" "}
-						Followers
+						<span className="bold">{kFormatter(data?.followerCount)}</span> Followers
 					</div>
 					<div>
 						<span className="bold">{kFormatter(data?.heartCount)}</span> Likes

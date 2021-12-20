@@ -51,11 +51,7 @@ const S = {
 		text-align: center;
 		padding: 0.5rem 0 1rem;
 		color: white;
-		background: linear-gradient(
-			180deg,
-			rgba(85, 85, 85, 1) 0%,
-			rgba(253, 255, 255, 0) 100%
-		);
+		background: linear-gradient(180deg, rgba(85, 85, 85, 1) 0%, rgba(253, 255, 255, 0) 100%);
 		top: 0;
 		left: 0;
 		width: 100%;

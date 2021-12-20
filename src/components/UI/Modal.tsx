@@ -7,6 +7,7 @@ type Props = {
 }
 
 const Modal: FC<Props> = ({ children, setIsModal }) => {
+	const overlayRootEl = document.getElementById("modal-root")
 	const handleClose = (e: MouseEvent<HTMLDivElement>) => {
 		if ((e.target as Element).id === "overlay-modal") {
 			setIsModal(false)
@@ -18,12 +19,14 @@ const Modal: FC<Props> = ({ children, setIsModal }) => {
 			document.body.style.overflow = "auto"
 		}
 	}, [])
-	return ReactDOM.createPortal(
-		<S.Overlay id="overlay-modal" onClick={handleClose}>
-			{children}
-		</S.Overlay>,
-		document.getElementById("modal-root")!
-	)
+	return overlayRootEl
+		? ReactDOM.createPortal(
+				<S.Overlay id="overlay-modal" onClick={handleClose}>
+					{children}
+				</S.Overlay>,
+				overlayRootEl
+		  )
+		: null
 }
 
 const S = {

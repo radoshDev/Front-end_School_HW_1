@@ -1,6 +1,7 @@
 import axios from "axios"
 import { Trends } from "types/trendsTypes"
 import { User, UserInfo } from "types/usersTypes"
+
 export class UserAPI {
 	static async auth(): Promise<User> {
 		const response = await axios.request({
@@ -16,6 +17,7 @@ export class UserAPI {
 		}
 		return response.data.user
 	}
+
 	static async getInfo(userId = "dave.xp"): Promise<UserInfo> {
 		const response = await axios.request({
 			method: "GET",
@@ -30,6 +32,7 @@ export class UserAPI {
 		}
 		return response.data
 	}
+
 	static async getFeed(): Promise<Trends> {
 		const response = await axios.request({
 			method: "GET",

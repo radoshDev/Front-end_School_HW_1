@@ -1,10 +1,10 @@
+import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import styled from "styled-components/macro"
 import { Container } from "styles/CommonStyles"
 import { FaBolt } from "react-icons/fa"
 import { MdAccountCircle } from "react-icons/md"
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
 import { authUser } from "features/user/userSlice"
 import { useAppSelector } from "app/hooks"
 import ErrorText from "components/UI/ErrorText"
@@ -16,28 +16,26 @@ const Nav = () => {
 		dispatch(authUser())
 	}, [dispatch])
 	return (
-		<>
-			<S.Menu>
-				<Container>
-					<S.InnerMenu>
-						<S.Logo to="/">
-							<FaBolt />
-							TikTuk
-						</S.Logo>
-						{isLoading || error ? (
-							<MdAccountCircle size={40} />
-						) : (
-							<Link to={`/account/${userAuth.uniqueId}`}>
-								<div className="icon">
-									<img src={userAuth.avatarThumb} alt={userAuth.nickname} />
-								</div>
-							</Link>
-						)}
-						{error && <ErrorText>{error}</ErrorText>}
-					</S.InnerMenu>
-				</Container>
-			</S.Menu>
-		</>
+		<S.Menu>
+			<Container>
+				<S.InnerMenu>
+					<S.Logo to="/">
+						<FaBolt />
+						TikTuk
+					</S.Logo>
+					{isLoading || error ? (
+						<MdAccountCircle size={40} />
+					) : (
+						<Link to={`/account/${userAuth.uniqueId}`}>
+							<div className="icon">
+								<img src={userAuth.avatarThumb} alt={userAuth.nickname} />
+							</div>
+						</Link>
+					)}
+					{error && <ErrorText>{error}</ErrorText>}
+				</S.InnerMenu>
+			</Container>
+		</S.Menu>
 	)
 }
 

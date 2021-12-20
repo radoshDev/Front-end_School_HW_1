@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, ReactEventHandler } from "react"
 import styled from "styled-components/macro"
 import { FiPause, FiPlay } from "react-icons/fi"
 import { RiVolumeDownFill, RiVolumeMuteFill } from "react-icons/ri"
@@ -23,8 +23,8 @@ const Video = ({ videoUrl }: Props) => {
 			setIsPlaying(true)
 		}
 	}
-	const handleLoaded = async (e: any) => {
-		await e.target.play()
+	const handleLoaded: ReactEventHandler<HTMLVideoElement> = async event => {
+		await (event.target as HTMLVideoElement).play()
 		setIsPlaying(true)
 		setIsLoading(false)
 	}
@@ -52,20 +52,10 @@ const Video = ({ videoUrl }: Props) => {
 	}
 	return (
 		<S.VideoContainer isLoading={isLoading}>
-			<video
-				ref={videoRef}
-				src={videoUrl}
-				onLoadedData={handleLoaded}
-				muted
-				loop
-			/>
+			<video ref={videoRef} src={videoUrl} onLoadedData={handleLoaded} muted loop />
 			<div className="controls">
 				{isPlaying ? <FiPause {...iconPlay} /> : <FiPlay {...iconPlay} />}
-				{isMuted ? (
-					<RiVolumeMuteFill {...iconMute} />
-				) : (
-					<RiVolumeDownFill {...iconMute} />
-				)}
+				{isMuted ? <RiVolumeMuteFill {...iconMute} /> : <RiVolumeDownFill {...iconMute} />}
 			</div>
 		</S.VideoContainer>
 	)

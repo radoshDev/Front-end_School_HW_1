@@ -69,11 +69,7 @@ const TrendVideo = ({ videoUrl }: Props) => {
 			/>
 			<div className="controls">
 				{isPlaying ? <FiPause {...iconPlay} /> : <FiPlay {...iconPlay} />}
-				{isMuted ? (
-					<RiVolumeMuteFill {...iconMute} />
-				) : (
-					<RiVolumeUpFill {...iconMute} />
-				)}
+				{isMuted ? <RiVolumeMuteFill {...iconMute} /> : <RiVolumeUpFill {...iconMute} />}
 			</div>
 			<div className="overlap" ref={ref} />
 		</S.VideoBlock>

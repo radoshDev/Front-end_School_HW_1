@@ -1,12 +1,13 @@
 import { FC } from "react"
 import styled, { css } from "styled-components"
+
 type Props = {
 	height?: string
 	color?: string
 }
-const Divider: FC<Props> = ({ height, children }) => {
+const Divider: FC<Props> = ({ height, color, children }) => {
 	return (
-		<Hr height={height} hasChild={!!children}>
+		<Hr height={height} color={color} hasChild={!!children}>
 			{children}
 		</Hr>
 	)

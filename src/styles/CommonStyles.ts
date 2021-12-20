@@ -35,8 +35,8 @@ export const Button = styled.button<ButtonI>`
 	border-radius: 0.28571429rem;
 	box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgb(34 36 38 / 15%) inset;
 	user-select: none;
-	transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease,
-		box-shadow 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
+	transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease,
+		background 0.1s ease, -webkit-box-shadow 0.1s ease;
 
 	&:hover {
 		background-color: #cacbcd;
