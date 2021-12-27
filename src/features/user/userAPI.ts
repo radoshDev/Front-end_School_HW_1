@@ -7,7 +7,7 @@ export class UserAPI {
 		const response = await API.get("user/info/dave.xp")
 
 		if (response.data.code === 1) {
-			throw Error("Can not authenticate user! Please retry later")
+			throw new Error("Can not authenticate user! Please retry later")
 		}
 
 		return response.data.user
@@ -17,7 +17,7 @@ export class UserAPI {
 		const response = await API.get(`/user/info/${userId}`)
 
 		if (response.data.code === 1) {
-			throw Error("Can not download user info! Please retry later")
+			throw new Error("Can not download user info! Please retry later")
 		}
 		return response.data
 	}
@@ -26,7 +26,7 @@ export class UserAPI {
 		const response = await API.get("/trending/feed")
 
 		if (response.data.code === 1) {
-			throw Error("Download Videos Failed!!! Please retry later")
+			throw new Error("Download Videos Failed!!! Please retry later")
 		}
 
 		return response.data

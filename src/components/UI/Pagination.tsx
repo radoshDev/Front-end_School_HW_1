@@ -12,10 +12,7 @@ const Pagination: FC<Props> = ({ totalPages, activePage, setActivePage, itemsPer
 	const [currentItems, setCurrentItems] = useState<number[]>([])
 	const [itemOffset, setItemOffset] = useState(0)
 	const items = useMemo(
-		() =>
-			Array(totalPages)
-				.fill(1)
-				.map((el: number, i) => el + i),
+		() => new Array(totalPages).fill(1).map((item: number, index) => item + index),
 		[totalPages]
 	)
 
@@ -34,7 +31,7 @@ const Pagination: FC<Props> = ({ totalPages, activePage, setActivePage, itemsPer
 		}
 		setActivePage(currentPage)
 	}
-	const handlePrev = () => {
+	const handlePrevious = () => {
 		if (activePage > 1) handlePageClick(activePage - 1)
 	}
 	const handleNext = () => {
@@ -44,7 +41,7 @@ const Pagination: FC<Props> = ({ totalPages, activePage, setActivePage, itemsPer
 	}
 	return (
 		<S.Pagination>
-			<S.Btn className={activePage === 1 ? "active" : ""} onClick={handlePrev}>
+			<S.Btn className={activePage === 1 ? "active" : ""} onClick={handlePrevious}>
 				Prev
 			</S.Btn>
 			{currentItems?.map(page => (

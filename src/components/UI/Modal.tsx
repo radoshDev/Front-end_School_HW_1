@@ -3,13 +3,13 @@ import ReactDOM from "react-dom"
 import styled from "styled-components/macro"
 
 type Props = {
-	setIsModal: (val: boolean) => void
+	setIsModal: (value: boolean) => void
 }
 
 const Modal: FC<Props> = ({ children, setIsModal }) => {
-	const overlayRootEl = document.getElementById("modal-root")
-	const handleClose = (e: MouseEvent<HTMLDivElement>) => {
-		if ((e.target as Element).id === "overlay-modal") {
+	const overlayRootElement = document.getElementById("modal-root")
+	const handleClose = (event: MouseEvent<HTMLDivElement>) => {
+		if ((event.target as Element).id === "overlay-modal") {
 			setIsModal(false)
 		}
 	}
@@ -19,12 +19,12 @@ const Modal: FC<Props> = ({ children, setIsModal }) => {
 			document.body.style.overflow = "auto"
 		}
 	}, [])
-	return overlayRootEl
+	return overlayRootElement
 		? ReactDOM.createPortal(
 				<S.Overlay id="overlay-modal" onClick={handleClose}>
 					{children}
 				</S.Overlay>,
-				overlayRootEl
+				overlayRootElement
 		  )
 		: null
 }

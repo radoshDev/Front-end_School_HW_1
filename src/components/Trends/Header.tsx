@@ -32,8 +32,8 @@ const Header = ({ image, name, nickname, description, isVerified, hashtags }: Pr
 				</div>
 				<p className="description">{description.replace(/\b#\w+\s?/g, "")}</p>
 				<div className="hashtags">
-					{hashtags.map((hash, i) => (
-						<Link key={hash.name + i} to={`tag/${hash.name}`}>
+					{hashtags.map((hash, index) => (
+						<Link key={hash.name + index} to={`tag/${hash.name}`}>
 							#{hash.name}
 						</Link>
 					))}

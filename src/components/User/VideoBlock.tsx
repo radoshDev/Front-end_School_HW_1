@@ -8,12 +8,12 @@ import Rectangle from "components/UI/Rectangle"
 import ErrorText from "components/UI/ErrorText"
 import { loadUserFeed } from "features/user/userSlice"
 
-const mockArray = Array(12).fill(1)
+const mockArray = new Array(12).fill(1)
 
 const VideoPreloader = () => (
 	<>
-		{mockArray.map((el, i) => (
-			<S.VideoWrapper key={el + i}>
+		{mockArray.map((item, index) => (
+			<S.VideoWrapper key={item + index}>
 				<Rectangle width={300} height={500} />
 			</S.VideoWrapper>
 		))}

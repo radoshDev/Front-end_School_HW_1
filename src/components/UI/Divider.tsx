@@ -30,13 +30,13 @@ const oneLine = css<Props>`
 	line-height: 1;
 	height: ${p => p.height || "1px"};
 `
-const flexProp = css`
+const flex = css`
 	display: flex;
 	align-items: center;
 `
 
 const Hr = styled.div<Props & { hasChild: boolean }>`
-	${p => (p.hasChild ? flexProp : "display: block")};
+	${p => (p.hasChild ? flex : "display: block")};
 	${p => (p.hasChild ? lines : oneLine)}
 `
 
