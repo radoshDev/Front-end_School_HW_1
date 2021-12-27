@@ -1,5 +1,5 @@
-import Rectangle from "components/UI/Rectangle"
 import styled from "styled-components/macro"
+import Rectangle from "components/UI/Rectangle"
 
 const TrendPreloader = () => {
 	return (

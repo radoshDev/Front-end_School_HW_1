@@ -1,8 +1,8 @@
-import Rectangle from "components/UI/Rectangle"
 import { FC } from "react"
 import styled from "styled-components/macro"
-import { Stats } from "types/usersTypes"
+import Rectangle from "components/UI/Rectangle"
 import { kFormatter } from "utils/kFormatter"
+import { Stats } from "types/usersTypes"
 
 type Props = {
 	loading: boolean

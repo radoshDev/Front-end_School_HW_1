@@ -1,9 +1,9 @@
 import { FC, useState } from "react"
 import styled from "styled-components/macro"
-import { kFormatter } from "utils/kFormatter"
 import VideoElement from "components/UI/Video"
-import { TrendItem } from "types/trendsTypes"
 import Modal from "components/UI/Modal"
+import { kFormatter } from "utils/kFormatter"
+import { TrendItem } from "types/trendsTypes"
 
 type Props = {
 	videoInfo: TrendItem

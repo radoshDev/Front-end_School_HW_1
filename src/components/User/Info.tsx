@@ -1,7 +1,7 @@
-import Rectangle from "components/UI/Rectangle"
 import { FC } from "react"
-import { MdVerified } from "react-icons/md"
 import styled from "styled-components/macro"
+import Rectangle from "components/UI/Rectangle"
+import { MdVerified } from "react-icons/md"
 import { User } from "types/usersTypes"
 
 type Props = {

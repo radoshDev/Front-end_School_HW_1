@@ -1,13 +1,13 @@
+import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import styled from "styled-components/macro"
-import { Container } from "styles/CommonStyles"
+import { useAppSelector } from "app/hooks"
 import { FaBolt } from "react-icons/fa"
 import { MdAccountCircle } from "react-icons/md"
-import { useEffect } from "react"
 import { authUser } from "features/user/userSlice"
-import { useAppSelector } from "app/hooks"
 import ErrorText from "components/UI/ErrorText"
+import { Container } from "styles/CommonStyles"
 
 const Nav = () => {
 	const dispatch = useDispatch()

@@ -1,19 +1,19 @@
-import { FaVideo } from "react-icons/fa"
+import { useEffect } from "react"
 import { useDispatch } from "react-redux"
+import { useParams } from "react-router-dom"
 import styled from "styled-components/macro"
+import { FaVideo } from "react-icons/fa"
 import { useAppSelector } from "app/hooks"
 import Divider from "components/UI/Divider"
 import UserVideoBlock from "components/User/VideoBlock"
-import { useEffect } from "react"
 import { loadUserInfo } from "features/user/userSlice"
-import { useParams } from "react-router-dom"
 import ErrorText from "components/UI/ErrorText"
 import Info from "./Info"
 import StatsInfo from "./StatsInfo"
 
 const UserPage = () => {
 	const dispatch = useDispatch()
-	const { data: infoData, isLoading: infoLoading, error } = useAppSelector(s => s.user.info)
+	const { data: infoData, isLoading: isInfoLoading, error } = useAppSelector(s => s.user.info)
 	const { id } = useParams()
 
 	useEffect(() => {
@@ -25,8 +25,8 @@ const UserPage = () => {
 	if (error) return <ErrorText>{error}</ErrorText>
 	return (
 		<>
-			<Info loading={infoLoading} data={infoData.user} />
-			<StatsInfo loading={infoLoading} data={infoData.stats} />
+			<Info loading={isInfoLoading} data={infoData.user} />
+			<StatsInfo loading={isInfoLoading} data={infoData.stats} />
 			<Divider height="4px">
 				<S.LineContent>
 					<FaVideo size={25} />

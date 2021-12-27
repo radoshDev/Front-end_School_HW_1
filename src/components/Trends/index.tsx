@@ -23,7 +23,6 @@ const Trends = () => {
 		}
 		window.scrollTo(0, 0)
 	}, [dispatch, currentPage, data.length])
-
 	if (error)
 		return (
 			<S.Videos>

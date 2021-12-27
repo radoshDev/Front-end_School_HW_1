@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { useInView } from "react-intersection-observer"
+import { useAppSelector } from "app/hooks"
 import styled from "styled-components/macro"
 import { FiPause, FiPlay } from "react-icons/fi"
 import { RiVolumeUpFill, RiVolumeMuteFill } from "react-icons/ri"
-import { useInView } from "react-intersection-observer"
-import { useAppSelector } from "app/hooks"
-import { useDispatch } from "react-redux"
 import { setMutedAll } from "features/trends/trendsSlice"
 
 type Props = {

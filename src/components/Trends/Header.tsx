@@ -8,11 +8,11 @@ type Props = {
 	name: string
 	nickname: string
 	description: string
-	verified: boolean
+	isVerified: boolean
 	hashtags: Hashtag[]
 }
 
-const Header = ({ image, name, nickname, description, verified, hashtags }: Props) => {
+const Header = ({ image, name, nickname, description, isVerified, hashtags }: Props) => {
 	return (
 		<S.Header>
 			<div className="avatar">
@@ -25,12 +25,12 @@ const Header = ({ image, name, nickname, description, verified, hashtags }: Prop
 					<Link className="name" to={`account/${name}`}>
 						{name}
 					</Link>
-					{verified && <VerifiedIcon size={20} />}
+					{isVerified && <VerifiedIcon size={20} />}
 					<Link className="nickname" to={`account/${name}`}>
 						{nickname}
 					</Link>
 				</div>
-				<p className="description">{description.replace(/\b#\w+\s?/gi, "")}</p>
+				<p className="description">{description.replace(/\b#\w+\s?/g, "")}</p>
 				<div className="hashtags">
 					{hashtags.map((hash, i) => (
 						<Link key={hash.name + i} to={`tag/${hash.name}`}>

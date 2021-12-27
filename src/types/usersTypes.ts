@@ -151,5 +151,6 @@ export type UserInfo = {
 	itemList: any[]
 	stats: Stats
 	user: User
+	code?: number
 }
 export type UserFeed = Array<Feed>

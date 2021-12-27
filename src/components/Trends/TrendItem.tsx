@@ -16,7 +16,7 @@ const TrendItem = ({ data }: Props) => {
 				name={data.authorMeta.name}
 				nickname={data.authorMeta.nickName}
 				description={data.text}
-				verified={data.authorMeta.verified}
+				isVerified={data.authorMeta.verified}
 				hashtags={data.hashtags}
 			/>
 			<Content

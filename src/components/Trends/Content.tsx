@@ -1,6 +1,6 @@
+import styled from "styled-components/macro"
 import TrendVideo from "components/Trends/TrendVideo"
 import ItemActionBar from "components/UI/ItemActionBar"
-import styled from "styled-components/macro"
 
 type Props = {
 	videoUrl: string

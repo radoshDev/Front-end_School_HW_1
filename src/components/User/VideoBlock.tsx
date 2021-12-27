@@ -1,12 +1,12 @@
 import { FC, useEffect } from "react"
-import styled from "styled-components/macro"
-import VideoItem from "components/User/VideoItem"
-import { useAppSelector } from "app/hooks"
 import { useParams } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import { loadUserFeed } from "features/user/userSlice"
+import { useAppSelector } from "app/hooks"
+import styled from "styled-components/macro"
+import VideoItem from "components/User/VideoItem"
 import Rectangle from "components/UI/Rectangle"
 import ErrorText from "components/UI/ErrorText"
+import { loadUserFeed } from "features/user/userSlice"
 
 const mockArray = Array(12).fill(1)
 
@@ -37,7 +37,7 @@ const VideoBlock: FC = () => {
 			{isLoading ? (
 				<VideoPreloader />
 			) : (
-				data?.map?.(item => <VideoItem videoInfo={item} key={item.id} />)
+				data.map(item => <VideoItem videoInfo={item} key={item.id} />)
 			)}
 		</S.VideoGrid>
 	)

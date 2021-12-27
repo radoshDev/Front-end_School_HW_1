@@ -1,6 +1,6 @@
+import styled from "styled-components/macro"
 import { FcLike } from "react-icons/fc"
 import { FaCommentDots } from "react-icons/fa"
-import styled from "styled-components/macro"
 import { kFormatter } from "utils/kFormatter"
 
 type Props = {
