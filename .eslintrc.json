@@ -1,0 +1,86 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react-hooks/recommended",
+		"plugin:react/recommended",
+		"plugin:import/errors",
+		"plugin:import/warnings",
+		"plugin:import/typescript",
+		"airbnb",
+		"plugin:prettier/recommended",
+		"prettier",
+		"plugin:promise/recommended",
+		"plugin:regexp/recommended",
+		"plugin:unicorn/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": ["react", "@typescript-eslint", "prettier", "promise", "regexp", "unicorn"],
+	"rules": {
+		"quotes": ["error", "double"],
+		"no-param-reassign": ["error", { "props": false }],
+		"no-use-before-define": "off",
+		"semi": "off",
+		"no-unused-vars": "off",
+		"@typescript-eslint/no-unused-vars": ["error"],
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"import/extensions": [
+			"error",
+			"ignorePackages",
+			{
+				"js": "never",
+				"jsx": "never",
+				"ts": "never",
+				"tsx": "never"
+			}
+		],
+		"import/prefer-default-export": "off",
+		"jsx-a11y/media-has-caption": "off",
+		"react/function-component-definition": [2, { "namedComponents": "arrow-function" }],
+		"react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
+		"react/jsx-props-no-spreading": "off",
+		"react/no-array-index-key": "warn",
+		"react/react-in-jsx-scope": "off",
+		"react/require-default-props": "off",
+		"unicorn/filename-case": [
+			"error",
+			{
+				"cases": {
+					"camelCase": true,
+					"pascalCase": true
+				},
+				"ignore": [".*API\\.(ts|js)", "react-app-env\\.d\\.ts"]
+			}
+		],
+		"unicorn/prevent-abbreviations": [
+			"error",
+			{
+				"allowList": {
+					"Props": true,
+					"videoRef": true,
+					"ProcessEnv": true,
+					"env": true
+				}
+			}
+		],
+		"unicorn/prefer-query-selector": "off",
+		"unicorn/no-null": "off",
+		"unicorn/no-new-array": "off",
+		"unicorn/no-static-only-class": "off"
+	},
+	"settings": {
+		"import/resolver": {
+			"typescript": {} // this loads <rootdir>/tsconfig.json to eslint
+		}
+	}
+}
