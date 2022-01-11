@@ -22,7 +22,7 @@ const Pagination: FC<Props> = ({ totalPages, activePage, setActivePage, itemsPer
 	}, [itemOffset, itemsPerPage, items])
 
 	// Invoke when user click to request another page.
-	const handlePageClick = (currentPage: number) => {
+	const handlePageClick = (currentPage: number): void => {
 		if (currentPage === currentItems[currentItems.length - 1] && currentPage >= itemsPerPage) {
 			setItemOffset(p => (p < totalPages - itemsPerPage ? p + 1 : totalPages - itemsPerPage))
 		}
@@ -31,10 +31,10 @@ const Pagination: FC<Props> = ({ totalPages, activePage, setActivePage, itemsPer
 		}
 		setActivePage(currentPage)
 	}
-	const handlePrevious = () => {
+	const handlePrevious = (): void => {
 		if (activePage > 1) handlePageClick(activePage - 1)
 	}
-	const handleNext = () => {
+	const handleNext = (): void => {
 		if (activePage < totalPages) {
 			handlePageClick(activePage + 1)
 		}

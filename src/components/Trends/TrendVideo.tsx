@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, FC } from "react"
 import { useDispatch } from "react-redux"
 import { useInView } from "react-intersection-observer"
 import { useAppSelector } from "app/hooks"
@@ -11,7 +11,7 @@ type Props = {
 	videoUrl?: string
 }
 
-const TrendVideo = ({ videoUrl }: Props) => {
+const TrendVideo: FC<Props> = ({ videoUrl }) => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [isPlaying, setIsPlaying] = useState(false)
 	const { ref, inView } = useInView({
@@ -21,7 +21,7 @@ const TrendVideo = ({ videoUrl }: Props) => {
 	const isMuted = useAppSelector(s => s.trends.isMuted)
 	const dispatch = useDispatch()
 
-	const handlePlay = async () => {
+	const handlePlay = async (): Promise<void> => {
 		if (!videoRef.current) return
 		if (isPlaying) {
 			await videoRef.current?.pause()
@@ -31,10 +31,10 @@ const TrendVideo = ({ videoUrl }: Props) => {
 			setIsPlaying(true)
 		}
 	}
-	const handleMute = () => {
+	const handleMute = (): void => {
 		dispatch(setMutedAll())
 	}
-	const handleAutoPlay = async () => {
+	const handleAutoPlay = async (): Promise<void> => {
 		if (inView) {
 			await videoRef.current?.play()
 			setIsPlaying(true)
@@ -55,7 +55,9 @@ const TrendVideo = ({ videoUrl }: Props) => {
 	}
 	useEffect(() => {
 		if (!isLoading) {
-			handleAutoPlay()
+			handleAutoPlay().catch((error: Error) => {
+				throw new Error(error.message)
+			})
 		}
 	}, [inView, isLoading])
 	return (

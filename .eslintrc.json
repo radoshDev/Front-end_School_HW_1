@@ -17,6 +17,14 @@
 		"plugin:regexp/recommended",
 		"plugin:unicorn/recommended"
 	],
+	"overrides": [
+		{
+			"files": ["*.ts", "*.tsx"],
+			"parserOptions": {
+				"project": ["./tsconfig.json"]
+			}
+		}
+	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaFeatures": {
@@ -33,7 +41,25 @@
 		"semi": "off",
 		"no-unused-vars": "off",
 		"@typescript-eslint/no-unused-vars": ["error"],
+		"@typescript-eslint/no-inferrable-types": [2],
+		"@typescript-eslint/no-explicit-any": 2,
 		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/member-delimiter-style": [
+			2,
+			{
+				"multiline": {
+					"delimiter": "none",
+					"requireLast": true
+				},
+				"singleline": {
+					"delimiter": "semi",
+					"requireLast": false
+				}
+			}
+		],
+		"@typescript-eslint/prefer-ts-expect-error": 2,
+		"@typescript-eslint/explicit-function-return-type": [2, { "allowExpressions": true }],
+		"@typescript-eslint/no-floating-promises": 2,
 		"import/extensions": [
 			"error",
 			"ignorePackages",

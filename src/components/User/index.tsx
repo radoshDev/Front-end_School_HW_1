@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, FC } from "react"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import styled from "styled-components/macro"
@@ -11,7 +11,7 @@ import ErrorText from "components/UI/ErrorText"
 import Info from "./Info"
 import StatsInfo from "./StatsInfo"
 
-const UserPage = () => {
+const UserPage: FC = () => {
 	const dispatch = useDispatch()
 	const { data: infoData, isLoading: isInfoLoading, error } = useAppSelector(s => s.user.info)
 	const { id } = useParams()

@@ -16,7 +16,7 @@ export const loadUserFeed = createAsyncThunk("loadUserFeed", async () => {
 	const data = await UserAPI.getFeed()
 	return data
 })
-
+type State = typeof initialState
 const initialState = {
 	auth: {
 		data: {} as User,
@@ -41,43 +41,43 @@ const userSlice = createSlice({
 	reducers: {},
 	extraReducers: builder =>
 		builder
-			.addCase(authUser.pending, state => {
+			.addCase(authUser.pending, (state: State) => {
 				state.auth.isLoading = true
 				state.auth.error = ""
 			})
-			.addCase(authUser.fulfilled, (state, action: PayloadAction<User>) => {
+			.addCase(authUser.fulfilled, (state: State, action: PayloadAction<User>) => {
 				if (action.payload) {
 					state.auth.data = action.payload
 				}
 				state.auth.isLoading = false
 				state.auth.error = ""
 			})
-			.addCase(authUser.rejected, state => {
+			.addCase(authUser.rejected, (state: State) => {
 				state.auth.error = "Not authorized. Try again"
 				state.auth.isLoading = false
 			})
-			.addCase(loadUserInfo.pending, state => {
+			.addCase(loadUserInfo.pending, (state: State) => {
 				state.info.isLoading = true
 				state.info.error = ""
 			})
-			.addCase(loadUserInfo.fulfilled, (state, action: PayloadAction<UserInfo>) => {
+			.addCase(loadUserInfo.fulfilled, (state: State, action: PayloadAction<UserInfo>) => {
 				state.info.data = action.payload
 				state.info.isLoading = false
 				state.info.error = ""
 			})
-			.addCase(loadUserInfo.rejected, state => {
+			.addCase(loadUserInfo.rejected, (state: State) => {
 				state.info.error = "Can't download user information"
 				state.info.isLoading = false
 			})
-			.addCase(loadUserFeed.pending, state => {
+			.addCase(loadUserFeed.pending, (state: State) => {
 				state.feed.isLoading = true
 				state.feed.error = ""
 			})
-			.addCase(loadUserFeed.fulfilled, (state, action: PayloadAction<Trends>) => {
+			.addCase(loadUserFeed.fulfilled, (state: State, action: PayloadAction<Trends>) => {
 				state.feed.data = action.payload
 				state.feed.isLoading = false
 			})
-			.addCase(loadUserFeed.rejected, state => {
+			.addCase(loadUserFeed.rejected, (state: State) => {
 				state.feed.error = "Download Videos Failed! Please retry later"
 				state.feed.isLoading = false
 			}),

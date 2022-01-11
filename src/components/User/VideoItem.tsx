@@ -2,7 +2,7 @@ import { FC, useState } from "react"
 import styled from "styled-components/macro"
 import VideoElement from "components/UI/Video"
 import Modal from "components/UI/Modal"
-import { kFormatter } from "utils/kFormatter"
+import { abbreviateNumber } from "utils/abbreviateNumber"
 import { TrendItem } from "types/trendsTypes"
 
 type Props = {
@@ -12,7 +12,7 @@ const VideoItem: FC<Props> = ({ videoInfo }) => {
 	const [isVideoShow, setIsVideoShow] = useState(false)
 	const [isModal, setIsModal] = useState(false)
 
-	const handleOpenModal = () => {
+	const handleOpenModal = (): void => {
 		setIsModal(true)
 	}
 	return (
@@ -23,7 +23,7 @@ const VideoItem: FC<Props> = ({ videoInfo }) => {
 				}}
 				onMouseEnter={() => setIsVideoShow(true)}
 				onMouseLeave={() => setIsVideoShow(false)}>
-				<S.Title>{kFormatter(videoInfo.playCount)} views</S.Title>
+				<S.Title>{abbreviateNumber(videoInfo.playCount)} views</S.Title>
 				<S.VideoWrapper imgUrl={videoInfo.covers.default}>
 					{isVideoShow && <VideoElement videoUrl={videoInfo.videoUrl} />}
 				</S.VideoWrapper>

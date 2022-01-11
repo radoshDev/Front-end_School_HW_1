@@ -1,3 +1,4 @@
+import { FC } from "react"
 import VerifiedIcon from "components/UI/VerifiedIcon"
 import { Link } from "react-router-dom"
 import styled from "styled-components/macro"
@@ -12,7 +13,7 @@ type Props = {
 	hashtags: Hashtag[]
 }
 
-const Header = ({ image, name, nickname, description, isVerified, hashtags }: Props) => {
+const Header: FC<Props> = ({ image, name, nickname, description, isVerified, hashtags }) => {
 	return (
 		<S.Header>
 			<div className="avatar">

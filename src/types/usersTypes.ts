@@ -148,7 +148,7 @@ type Feed = {
 	vl1: boolean
 }
 export type UserInfo = {
-	itemList: any[]
+	itemList: unknown[]
 	stats: Stats
 	user: User
 	code?: number

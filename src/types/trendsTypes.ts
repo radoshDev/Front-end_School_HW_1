@@ -50,7 +50,7 @@ export type TrendItem = {
 	effectStickers: Array<{ id: string; name: string }>
 	hashtags: Hashtag[]
 	id: string
-	mentions: any[]
+	mentions: unknown[]
 	musicMeta: MusicMeta
 	playCount: number
 	secretID: string

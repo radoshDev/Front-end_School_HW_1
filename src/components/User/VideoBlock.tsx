@@ -10,7 +10,7 @@ import { loadUserFeed } from "features/user/userSlice"
 
 const mockArray = new Array(12).fill(1)
 
-const VideoPreloader = () => (
+const VideoPreloader: FC = () => (
 	<>
 		{mockArray.map((item, index) => (
 			<S.VideoWrapper key={item + index}>
