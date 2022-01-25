@@ -40,7 +40,7 @@ export type Hashtag = {
 	title: string
 	cover: string
 }
-export type TrendItem = {
+export type Trend = {
 	authorMeta: AuthorMeta
 	commentCount: number
 	covers: Covers
@@ -63,4 +63,4 @@ export type TrendItem = {
 	webVideoUrl: string
 }
 
-export type Trends = TrendItem[]
+export type Trends = Trend[]
