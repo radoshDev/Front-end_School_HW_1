@@ -1,12 +1,12 @@
 import { useEffect, useState, FC } from "react"
 import { useDispatch } from "react-redux"
-import { loadTrends } from "store/slices/trendsSlice"
-import { useAppSelector } from "store/hooks"
-import Pagination from "components/ui/Pagination/Pagination"
-import TrendPreloader from "components/trends/Preloader/Preloader"
-import ErrorText from "components/ui/ErrorText"
-import Card from "components/trends/Card"
 import styled from "styled-components/macro"
+import ErrorText from "../../components/ui/ErrorText"
+import { useAppSelector } from "../../store/hooks"
+import { loadTrends } from "../../store/slices/trendsSlice"
+import Preloader from "../../components/trends/Preloader"
+import Card from "../../components/trends/Card"
+import Pagination from "../../components/ui/Pagination"
 
 const Trends: FC = () => {
 	const dispatch = useDispatch()
@@ -33,7 +33,7 @@ const Trends: FC = () => {
 	return (
 		<S.Videos>
 			{isLoading ? (
-				<TrendPreloader />
+				<Preloader />
 			) : (
 				<>
 					{data.slice(start, end).map(trend => (

@@ -1,35 +1,41 @@
 import { FC } from "react"
 import styled, { css } from "styled-components/macro"
 
-type Props = {
-	height?: string
-	color?: string
+type DividerProps = {
+	lineHeight?: number
+	lineColor?: string
 }
 
-const Divider: FC<Props> = ({ height, color, children }) => {
+const Divider: FC<DividerProps> = ({ lineHeight = 1, lineColor = "#22242626", children }) => {
 	return (
-		<S.Line height={height} color={color} hasChild={!!children}>
+		<S.Line
+			lineHeight={lineHeight}
+			lineColor={lineColor}
+			hasChild={!!children}
+			data-testid="divider">
 			{children}
 		</S.Line>
 	)
 }
 
-const textBetweenLines = css<Props>`
+type StyleProps = Required<DividerProps> & { hasChild: boolean }
+
+const textBetweenLines = css<StyleProps>`
 	&::before,
 	&::after {
 		content: "";
 		width: 50%;
-		height: ${p => p.height || "1px"};
-		background-color: ${p => p.color || "rgba(34, 36, 38, 0.15)"};
+		height: ${p => `${p.lineHeight}px`};
+		background-color: ${p => p.lineColor};
 		line-height: 1;
 		margin: 1rem 0;
 	}
 `
-const solidLine = css<Props>`
-	background-color: ${p => p.color || "rgba(34, 36, 38, 0.15)"};
+const solidLine = css<StyleProps>`
+	background-color: ${p => p.lineColor};
 	margin: 1rem 0;
 	line-height: 1;
-	height: ${p => p.height || "1px"};
+	height: ${p => p.lineHeight};
 `
 const flex = css`
 	display: flex;
@@ -37,7 +43,7 @@ const flex = css`
 `
 
 export const S = {
-	Line: styled.div<Props & { hasChild: boolean }>`
+	Line: styled.div<StyleProps>`
 		${p => (p.hasChild ? flex : "display: block")};
 		${p => (p.hasChild ? textBetweenLines : solidLine)}
 	`,

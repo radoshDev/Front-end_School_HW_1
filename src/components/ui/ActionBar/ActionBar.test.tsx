@@ -9,6 +9,7 @@ describe("#ActionBar", () => {
 	})
 	it("render component with own props", () => {
 		const { container } = render(<ActionBar commentCount={10} likeCount={2000} />)
+
 		const result = container.querySelectorAll(".amount")
 		const likeAmountElement = result[0]
 		const commentAmountElement = result[1]

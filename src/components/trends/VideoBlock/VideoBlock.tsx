@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect, FC } from "react"
 import { useDispatch } from "react-redux"
 import { useInView } from "react-intersection-observer"
-import { useAppSelector } from "store/hooks"
 import styled from "styled-components/macro"
-import { setMutedAll } from "store/slices/trendsSlice"
-import Controls from "components/ui/Video/Controls"
+import { useAppSelector } from "../../../store/hooks"
+import { setMutedAll } from "../../../store/slices/trendsSlice"
+import Controls from "../../ui/Video/Controls"
 
 type Props = {
 	videoUrl?: string

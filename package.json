@@ -14,6 +14,7 @@
 		"@types/react-redux": "^7.1.7",
 		"@types/styled-components": "^5.1.15",
 		"axios": "^0.24.0",
+		"history": "^5.2.0",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"react-icons": "^4.3.1",
@@ -77,5 +78,11 @@
 		"commitizen": {
 			"path": "./node_modules/cz-conventional-changelog"
 		}
+	},
+	"jest": {
+		"collectCoverageFrom": [
+			"src/**/*.{ts,tsx}",
+			"!src/index.tsx"
+		]
 	}
 }

@@ -1,9 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { getTrends } from "services/trends/getTrends"
-import { Trends } from "types/trendsTypes"
+import { getTrends } from "../../services/trends/getTrends"
+import { Trends } from "../../types/trendsTypes"
+import { TRENDS_ERRORS } from "./constants"
 
 export const loadTrends = createAsyncThunk("loadTrends", getTrends)
+
 type State = typeof initialState
+
 const initialState = {
 	data: [] as Trends,
 	isLoading: true,
@@ -31,7 +34,7 @@ const trendsSlice = createSlice({
 				state.error = ""
 			})
 			.addCase(loadTrends.rejected, (state: State) => {
-				state.error = "Download Videos Failed! Please retry later"
+				state.error = TRENDS_ERRORS.trends
 				state.isLoading = false
 			})
 	},

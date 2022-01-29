@@ -2,6 +2,7 @@ import { FC } from "react"
 import styled from "styled-components/macro"
 
 const ErrorText: FC = ({ children }) => {
+	if (!children) return null
 	return <S.Error>{children}</S.Error>
 }
 

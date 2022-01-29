@@ -1,14 +1,14 @@
 import { FC } from "react"
-import Divider from "components/ui/Divider"
-import { Trend } from "types/trendsTypes"
 import Header from "../Header"
 import Content from "../Content"
+import { Trend } from "../../../types/trendsTypes"
+import Divider from "../../ui/Divider"
 
-type Props = {
+export type CardProps = {
 	trend: Trend
 }
 
-const TrendCard: FC<Props> = ({ trend }) => {
+const Card: FC<CardProps> = ({ trend }) => {
 	return (
 		<div className="trend-card">
 			<Header
@@ -29,4 +29,4 @@ const TrendCard: FC<Props> = ({ trend }) => {
 	)
 }
 
-export default TrendCard
+export default Card

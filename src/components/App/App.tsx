@@ -1,18 +1,20 @@
-import { Route, Routes } from "react-router-dom"
-import Nav from "components/Navigation/Navigation"
-import User from "pages/User"
-import Trends from "pages/Trends"
-import { Container } from "styles/CommonStyles"
 import { FC } from "react"
+import { Route, Routes } from "react-router-dom"
+import NotFound from "../../pages/NotFound"
+import Trends from "../../pages/Trends"
+import User from "../../pages/User"
+import { Container } from "../../styles/CommonStyles"
+import Navigation from "../Navigation"
 
 const App: FC = () => {
 	return (
 		<div className="App">
-			<Nav />
+			<Navigation />
 			<Container id="main">
 				<Routes>
 					<Route path="/" element={<Trends />} />
 					<Route path="/account/:id" element={<User />} />
+					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</Container>
 		</div>

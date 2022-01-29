@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios"
-import { Trends } from "types/trendsTypes"
+import { Trends } from "../types/trendsTypes"
 import { apiGet } from "./api"
 
 export const USER_FEED_URL = "/trending/feed"

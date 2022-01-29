@@ -1,15 +1,15 @@
-import { FC } from "react"
+import { ReactElement } from "react"
 import styled from "styled-components/macro"
-import Rectangle from "components/ui/Rectangle"
-import { abbreviateNumber } from "helpers/abbreviateNumber"
-import { Stats as StatsType } from "types/usersTypes"
+import { abbreviateNumber } from "../../../helpers/abbreviateNumber"
+import { Stats } from "../../../types/usersTypes"
+import Rectangle from "../../ui/Rectangle"
 
 type Props = {
 	isLoading: boolean
-	stats: StatsType
+	stats: Stats
 }
 
-const Statistics: FC<Props> = ({ isLoading, stats }) => {
+const Statistics = ({ isLoading, stats }: Props): ReactElement => {
 	return (
 		<S.Statistics>
 			{isLoading ? (

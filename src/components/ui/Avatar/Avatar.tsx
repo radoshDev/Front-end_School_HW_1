@@ -1,9 +1,9 @@
 /* eslint-disable unicorn/explicit-length-check */
 import { ReactElement } from "react"
-import Rectangle from "components/ui/Rectangle"
 import styled from "styled-components/macro"
+import Rectangle from "../Rectangle"
 
-type AvatarProps = {
+export type AvatarProps = {
 	avatarUrl: string
 	altText: string
 	size: number

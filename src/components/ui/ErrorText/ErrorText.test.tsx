@@ -11,6 +11,15 @@ describe("#ErrorText", () => {
 			</ErrorText>
 		)
 		expect(screen.getByTestId(testId)).toHaveTextContent(/test error/i)
+	})
+
+	it("should return null when render without children", () => {
+		const { container } = render(<ErrorText />)
+		expect(container.firstChild).toBeNull()
+	})
+
+	it("should have styles from styled-component", () => {
+		render(<ErrorText>Mock text</ErrorText>)
 		expect(find(document.body, S.Error)).toBeInTheDocument()
 	})
 })

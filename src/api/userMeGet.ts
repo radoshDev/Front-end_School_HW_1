@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios"
-import { UserInfo } from "types/usersTypes"
+import { UserInfo } from "../types/usersTypes"
 import { apiGet } from "./api"
 
 export const USER_ME_PATH = "user/info/dave.xp"

@@ -3,7 +3,8 @@ import VerifiedIcon from "./VerifiedIcon"
 
 describe("#VerifiedIcon", () => {
 	it("render component", () => {
-		const { container } = render(<VerifiedIcon size={25} />)
+		const { container, getByTestId } = render(<VerifiedIcon size={25} />)
+		expect(getByTestId("verified-icon")).toBeInTheDocument()
 		expect(container.querySelector("svg")).toBeInTheDocument()
 	})
 })

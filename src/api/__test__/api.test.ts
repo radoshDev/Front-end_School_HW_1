@@ -19,6 +19,7 @@ describe("#apiGet", () => {
 
 		const response = await apiGet("test-url")
 		expect(mockApiInstance.get).toBeCalledTimes(1)
+		expect(mockApiInstance.get).toBeCalledWith("test-url")
 		expect(response).toEqual({ data: "test-data" })
 	})
 })

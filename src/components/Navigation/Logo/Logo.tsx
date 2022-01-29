@@ -3,16 +3,18 @@ import { FaBolt } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import styled from "styled-components/macro"
 
+export const TEXT_LOGO = "TikTuk"
+
 const Logo: FC = () => {
 	return (
 		<S.Logo to="/">
 			<FaBolt />
-			TikTuk
+			{TEXT_LOGO}
 		</S.Logo>
 	)
 }
 
-const S = {
+export const S = {
 	Logo: styled(Link)`
 		display: flex;
 		align-items: center;

@@ -1,9 +1,9 @@
 import { FC } from "react"
-import ActionBar from "components/ui/ActionBar"
 import styled from "styled-components/macro"
-import VideoBlock from "components/trends/VideoBlock"
+import ActionBar from "../../ui/ActionBar"
+import VideoBlock from "../VideoBlock"
 
-type ContentProps = {
+export type ContentProps = {
 	videoUrl: string
 	commentCount: number
 	likeCount: number

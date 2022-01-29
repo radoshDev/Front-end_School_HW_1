@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { apiGet } from "api/api"
+import { apiGet } from "../api"
 import { userInfoGet, USER_INFO_PATH } from "../userInfoGet"
 
 jest.mock("../api", () => {

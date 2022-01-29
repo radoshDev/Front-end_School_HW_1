@@ -1,14 +1,14 @@
-import { FC, useState } from "react"
+import { ReactElement, useState } from "react"
 import styled from "styled-components/macro"
-import { abbreviateNumber } from "helpers/abbreviateNumber"
-import { Trend } from "types/trendsTypes"
-import Video from "components/ui/Video"
-import Modal from "components/ui/Modal"
+import { abbreviateNumber } from "../../../helpers/abbreviateNumber"
+import { Trend } from "../../../types/trendsTypes"
+import Modal from "../../ui/Modal"
+import Video from "../../ui/Video"
 
 type Props = {
 	videoInfo: Trend
 }
-const VideoCard: FC<Props> = ({ videoInfo }) => {
+const VideoCard = ({ videoInfo }: Props): ReactElement => {
 	const [isVideoShow, setIsVideoShow] = useState(false)
 	const [isModal, setIsModal] = useState(false)
 
@@ -24,7 +24,7 @@ const VideoCard: FC<Props> = ({ videoInfo }) => {
 				onMouseEnter={() => setIsVideoShow(true)}
 				onMouseLeave={() => setIsVideoShow(false)}>
 				<S.Title>{abbreviateNumber(videoInfo.playCount)} views</S.Title>
-				<S.VideoWrapper imgUrl={videoInfo.covers.default}>
+				<S.VideoWrapper imgUrl={videoInfo.covers.default} data-testid="video-cover">
 					{isVideoShow && <Video url={videoInfo.videoUrl} />}
 				</S.VideoWrapper>
 			</S.Card>

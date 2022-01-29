@@ -1,24 +1,23 @@
 import { FC, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import { useAppSelector } from "store/hooks"
 import styled from "styled-components/macro"
-import VideoCard from "components/user/VideoCard"
-import ErrorText from "components/ui/ErrorText"
-import { loadUserFeed } from "store/slices/userSlice"
-import Preloader from "components/user/Preloader"
+import { useAppSelector } from "../../../store/hooks"
+import { loadUserFeed } from "../../../store/slices/userSlice"
+import ErrorText from "../../ui/ErrorText"
+import Preloader from "../Preloader"
+import VideoCard from "../VideoCard"
 
-const VideoBlock: FC = () => {
+const VideoGrid: FC = () => {
 	const dispatch = useDispatch()
 	const { data: feeds, isLoading, error } = useAppSelector(s => s.user.feed)
 	const userId = useAppSelector(s => s.user.info.data?.user?.uniqueId)
 	const { id } = useParams()
-
 	useEffect(() => {
-		if (id !== userId) {
+		if (userId !== id) {
 			dispatch(loadUserFeed())
 		}
-	}, [id, dispatch, userId])
+	}, [dispatch, userId, id])
 
 	if (error) return <ErrorText>{error}</ErrorText>
 
@@ -41,4 +40,4 @@ const S = {
 		position: relative;
 	`,
 }
-export default VideoBlock
+export default VideoGrid

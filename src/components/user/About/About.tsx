@@ -1,8 +1,8 @@
-import Rectangle from "components/ui/Rectangle"
-import VerifiedIcon from "components/ui/VerifiedIcon"
 import { FC } from "react"
 import styled from "styled-components"
-import { User } from "types/usersTypes"
+import { User } from "../../../types/usersTypes"
+import Rectangle from "../../ui/Rectangle"
+import VerifiedIcon from "../../ui/VerifiedIcon"
 
 type Props = {
 	isLoading?: boolean

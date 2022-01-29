@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { User, UserInfo } from "types/usersTypes"
-import { Trends } from "types/trendsTypes"
-import { getUserMe } from "services/user/getUserMe"
-import { getUserInfo } from "services/user/getUserInfo"
-import { getUserFeeds } from "services/user/getUserFeeds"
+import { getUserFeeds } from "../../services/user/getUserFeeds"
+import { getUserInfo } from "../../services/user/getUserInfo"
+import { getUserMe } from "../../services/user/getUserMe"
+import { Trends } from "../../types/trendsTypes"
+import { User, UserInfo } from "../../types/usersTypes"
+import { USER_ERRORS } from "./constants"
 
 export const authUser = createAsyncThunk("authUser", getUserMe)
 export const loadUserInfo = createAsyncThunk("loadUserInfo", getUserInfo)
@@ -46,7 +47,7 @@ const userSlice = createSlice({
 				state.auth.error = ""
 			})
 			.addCase(authUser.rejected, (state: State) => {
-				state.auth.error = "Not authorized. Try again"
+				state.auth.error = USER_ERRORS.auth
 				state.auth.isLoading = false
 			})
 			.addCase(loadUserInfo.pending, (state: State) => {
@@ -59,7 +60,7 @@ const userSlice = createSlice({
 				state.info.error = ""
 			})
 			.addCase(loadUserInfo.rejected, (state: State) => {
-				state.info.error = "Can't download user information"
+				state.info.error = USER_ERRORS.info
 				state.info.isLoading = false
 			})
 			.addCase(loadUserFeed.pending, (state: State) => {
@@ -71,7 +72,7 @@ const userSlice = createSlice({
 				state.feed.isLoading = false
 			})
 			.addCase(loadUserFeed.rejected, (state: State) => {
-				state.feed.error = "Download Videos Failed! Please retry later"
+				state.feed.error = USER_ERRORS.feeds
 				state.feed.isLoading = false
 			}),
 })

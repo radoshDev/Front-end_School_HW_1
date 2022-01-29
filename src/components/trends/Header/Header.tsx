@@ -1,12 +1,13 @@
 import { FC } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components/macro"
-import { Hashtag } from "types/trendsTypes"
-import Avatar from "components/ui/Avatar/Avatar"
-import Hashtags from "components/ui/Hashtags"
-import UserSign from "components/trends/UserSign"
+import { removeHashtagFromText } from "../../../helpers/removeHashtagFromText"
+import { Hashtag } from "../../../types/trendsTypes"
+import Avatar from "../../ui/Avatar"
+import Hashtags from "../../ui/Hashtags"
+import UserSign from "../UserSign"
 
-type Props = {
+export type HeaderProps = {
 	avatarUrl: string
 	authorName: string
 	authorNickname: string
@@ -15,9 +16,9 @@ type Props = {
 	hashtags: Hashtag[]
 }
 
-const Header: FC<Props> = props => {
+const Header: FC<HeaderProps> = props => {
 	const { avatarUrl, authorName, authorNickname, description, isAuthorVerified, hashtags } = props
-	const descriptionWithoutHashSymbol = description.replace(/\b#\w+\s?/g, "")
+
 	return (
 		<S.Header>
 			<Link to={`account/${authorName}`}>
@@ -29,7 +30,7 @@ const Header: FC<Props> = props => {
 					authorNickname={authorNickname}
 					isAuthorVerified={isAuthorVerified}
 				/>
-				<p className="description">{descriptionWithoutHashSymbol}</p>
+				<p className="description">{removeHashtagFromText(description)}</p>
 				<Hashtags hashtags={hashtags} />
 			</div>
 		</S.Header>

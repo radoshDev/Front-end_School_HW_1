@@ -1,6 +1,6 @@
 import { FC } from "react"
 import styled from "styled-components/macro"
-import Rectangle from "components/ui/Rectangle"
+import Rectangle from "../../ui/Rectangle"
 
 const Preloader: FC = () => {
 	return (

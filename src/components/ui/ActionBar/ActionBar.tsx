@@ -1,28 +1,28 @@
 import { ReactElement } from "react"
 import { FcLike } from "react-icons/fc"
 import { FaCommentDots } from "react-icons/fa"
-import { abbreviateNumber } from "helpers/abbreviateNumber"
 import styled from "styled-components/macro"
+import { abbreviateNumber } from "../../../helpers/abbreviateNumber"
 
 export type Props = {
 	commentCount?: number
 	likeCount?: number
 }
 
-const ActionBar = ({ commentCount, likeCount }: Props): ReactElement => {
+const ActionBar = ({ commentCount = 0, likeCount = 0 }: Props): ReactElement => {
 	return (
 		<S.ActionBar>
 			<div className="item-action">
 				<div className="icon">
 					<FcLike size={30} />
 				</div>
-				<span className="amount">{abbreviateNumber(likeCount || 0)}</span>
+				<span className="amount">{abbreviateNumber(likeCount)}</span>
 			</div>
 			<div className="item-action">
 				<div className="icon">
 					<FaCommentDots size={30} />
 				</div>
-				<span className="amount">{abbreviateNumber(commentCount || 0)}</span>
+				<span className="amount">{abbreviateNumber(commentCount)}</span>
 			</div>
 		</S.ActionBar>
 	)

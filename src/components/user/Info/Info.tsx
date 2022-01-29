@@ -1,7 +1,7 @@
 import { FC } from "react"
 import styled from "styled-components/macro"
-import { User } from "types/usersTypes"
-import Avatar from "components/ui/Avatar"
+import { User } from "../../../types/usersTypes"
+import Avatar from "../../ui/Avatar"
 import About from "../About"
 
 type Props = {
@@ -13,8 +13,8 @@ const Info: FC<Props> = ({ isLoading, user }) => {
 	return (
 		<S.Info>
 			<Avatar
-				avatarUrl={user.avatarMedium}
-				altText={user.nickname}
+				avatarUrl={user?.avatarMedium}
+				altText={user?.nickname}
 				size={150}
 				isLoading={isLoading}
 			/>

@@ -1,22 +1,23 @@
 import { FC } from "react"
 import { Link } from "react-router-dom"
-import VerifiedIcon from "components/ui/VerifiedIcon"
 import styled from "styled-components"
+import { ROUTES } from "../../../pages/router"
+import VerifiedIcon from "../../ui/VerifiedIcon"
 
-type Props = {
+export type UserSignProps = {
 	authorName: string
 	isAuthorVerified: boolean
 	authorNickname: string
 }
 
-const UserSign: FC<Props> = ({ authorName, isAuthorVerified, authorNickname }) => {
+const UserSign: FC<UserSignProps> = ({ authorName, isAuthorVerified, authorNickname }) => {
 	return (
 		<S.UserSign>
-			<Link className="name" to={`account/${authorName}`}>
+			<Link className="name" to={`${ROUTES.account}/${authorName}`}>
 				{authorName}
 			</Link>
 			{isAuthorVerified && <VerifiedIcon size={20} />}
-			<Link className="nickname" to={`account/${authorName}`}>
+			<Link className="nickname" to={`${ROUTES.account}/${authorName}`}>
 				{authorNickname}
 			</Link>
 		</S.UserSign>

@@ -6,7 +6,7 @@ type Props = {
 }
 
 const VerifiedIcon: FC<Props> = ({ size }) => {
-	return <MdVerified color="lightblue" size={size} />
+	return <MdVerified color="lightblue" size={size} data-testid="verified-icon" />
 }
 
 export default VerifiedIcon

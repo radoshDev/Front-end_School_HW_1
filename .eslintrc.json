@@ -36,13 +36,14 @@
 	},
 	"plugins": ["react", "@typescript-eslint", "prettier", "promise", "regexp", "unicorn"],
 	"rules": {
-		"quotes": ["error", "double"],
+		"prettier/prettier": "warn",
+		"quotes": ["warn", "double"],
 		"no-param-reassign": ["error", { "props": false }],
 		"no-use-before-define": "off",
 		"no-restricted-exports": "off",
 		"semi": "off",
 		"no-unused-vars": "off",
-		"@typescript-eslint/no-unused-vars": ["error"],
+		"@typescript-eslint/no-unused-vars": ["warn"],
 		"@typescript-eslint/no-inferrable-types": [2],
 		"@typescript-eslint/no-explicit-any": 2,
 		"@typescript-eslint/explicit-module-boundary-types": "off",
@@ -98,7 +99,8 @@
 					"videoRef": true,
 					"ProcessEnv": true,
 					"env": true,
-					"props": true
+					"props": true,
+					"i": true
 				}
 			}
 		],
