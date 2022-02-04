@@ -8,7 +8,7 @@ type Props = {
 
 const Modal: FC<Props> = ({ children, setIsModal }) => {
 	const overlayRootElement = document.getElementById("modal-root")
-	const handleClose = (event: MouseEvent<HTMLDivElement>) => {
+	const handleClose = (event: MouseEvent<HTMLDivElement>): void => {
 		if ((event.target as Element).id === "overlay-modal") {
 			setIsModal(false)
 		}

@@ -1,4 +1,4 @@
-import { useState, useRef, ReactEventHandler } from "react"
+import { FC, useState, useRef, ReactEventHandler } from "react"
 import styled from "styled-components/macro"
 import { FiPause, FiPlay } from "react-icons/fi"
 import { RiVolumeDownFill, RiVolumeMuteFill } from "react-icons/ri"
@@ -7,19 +7,21 @@ type Props = {
 	videoUrl?: string
 }
 
-const Video = ({ videoUrl }: Props) => {
+const Video: FC<Props> = ({ videoUrl }) => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [isMuted, setIsMuted] = useState(true)
 
 	const videoRef = useRef<HTMLVideoElement | null>(null)
-	const handlePlay = () => {
+	const handlePlay = (): void => {
 		if (!videoRef.current) return
 		if (isPlaying) {
 			videoRef.current?.pause()
 			setIsPlaying(false)
 		} else {
-			videoRef.current?.play()
+			videoRef.current?.play().catch((error: Error) => {
+				throw new Error(error.message)
+			})
 			setIsPlaying(true)
 		}
 	}
@@ -28,7 +30,7 @@ const Video = ({ videoUrl }: Props) => {
 		setIsPlaying(true)
 		setIsLoading(false)
 	}
-	const handleMute = () => {
+	const handleMute = (): void => {
 		if (!videoRef.current) return
 
 		if (videoRef.current.muted) {

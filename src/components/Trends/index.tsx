@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, FC } from "react"
 import styled from "styled-components/macro"
 import { useDispatch } from "react-redux"
 import { loadTrends } from "features/trends/trendsSlice"
@@ -8,7 +8,7 @@ import TrendPreloader from "components/Trends/TrendPreloader"
 import ErrorText from "components/UI/ErrorText"
 import TrendItem from "./TrendItem"
 
-const Trends = () => {
+const Trends: FC = () => {
 	const dispatch = useDispatch()
 	const { data, isLoading, error } = useAppSelector(s => s.trends)
 	const [currentPage, setCurrentPage] = useState(1)

@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, FC } from "react"
 import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import styled from "styled-components/macro"
@@ -9,7 +9,7 @@ import { authUser } from "features/user/userSlice"
 import ErrorText from "components/UI/ErrorText"
 import { Container } from "styles/CommonStyles"
 
-const Nav = () => {
+const Nav: FC = () => {
 	const dispatch = useDispatch()
 	const { data: userAuth, isLoading, error } = useAppSelector(s => s.user.auth)
 	useEffect(() => {

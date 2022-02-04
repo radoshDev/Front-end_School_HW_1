@@ -1,3 +1,4 @@
+import { FC } from "react"
 import styled from "styled-components/macro"
 import Divider from "components/UI/Divider"
 import { TrendItem as TrendI } from "types/trendsTypes"
@@ -8,7 +9,7 @@ type Props = {
 	data: TrendI
 }
 
-const TrendItem = ({ data }: Props) => {
+const TrendItem: FC<Props> = ({ data }) => {
 	return (
 		<S.Card>
 			<Header

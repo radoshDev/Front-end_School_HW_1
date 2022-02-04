@@ -1,7 +1,8 @@
+import { FC } from "react"
 import styled from "styled-components/macro"
 import Rectangle from "components/UI/Rectangle"
 
-const TrendPreloader = () => {
+const TrendPreloader: FC = () => {
 	return (
 		<S.Container>
 			<div className="icon">

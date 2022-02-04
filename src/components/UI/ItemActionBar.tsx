@@ -1,27 +1,28 @@
+import { FC } from "react"
 import styled from "styled-components/macro"
 import { FcLike } from "react-icons/fc"
 import { FaCommentDots } from "react-icons/fa"
-import { kFormatter } from "utils/kFormatter"
+import { abbreviateNumber } from "utils/abbreviateNumber"
 
 type Props = {
 	commentCount: number
 	likeCount: number
 }
 
-const ItemActionBar = ({ commentCount, likeCount }: Props) => {
+const ItemActionBar: FC<Props> = ({ commentCount, likeCount }) => {
 	return (
 		<S.ActionBar>
 			<div className="item">
 				<div className="icon">
 					<FcLike size={30} />
 				</div>
-				<span className="amount">{kFormatter(likeCount)}</span>
+				<span className="amount">{abbreviateNumber(likeCount)}</span>
 			</div>
 			<div className="item">
 				<div className="icon">
 					<FaCommentDots size={30} />
 				</div>
-				<span className="amount">{kFormatter(commentCount)}</span>
+				<span className="amount">{abbreviateNumber(commentCount)}</span>
 			</div>
 		</S.ActionBar>
 	)

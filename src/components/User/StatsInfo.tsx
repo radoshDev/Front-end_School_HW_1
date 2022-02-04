@@ -1,7 +1,7 @@
 import { FC } from "react"
 import styled from "styled-components/macro"
 import Rectangle from "components/UI/Rectangle"
-import { kFormatter } from "utils/kFormatter"
+import { abbreviateNumber } from "utils/abbreviateNumber"
 import { Stats } from "types/usersTypes"
 
 type Props = {
@@ -17,13 +17,13 @@ const StatsInfo: FC<Props> = ({ loading, data }) => {
 			) : (
 				<>
 					<div>
-						<span className="bold">{kFormatter(data?.followingCount)}</span> Following
+						<span className="bold">{abbreviateNumber(data?.followingCount)}</span> Following
 					</div>
 					<div>
-						<span className="bold">{kFormatter(data?.followerCount)}</span> Followers
+						<span className="bold">{abbreviateNumber(data?.followerCount)}</span> Followers
 					</div>
 					<div>
-						<span className="bold">{kFormatter(data?.heartCount)}</span> Likes
+						<span className="bold">{abbreviateNumber(data?.heartCount)}</span> Likes
 					</div>
 				</>
 			)}

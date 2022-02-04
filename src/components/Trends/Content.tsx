@@ -1,3 +1,4 @@
+import { FC } from "react"
 import styled from "styled-components/macro"
 import TrendVideo from "components/Trends/TrendVideo"
 import ItemActionBar from "components/UI/ItemActionBar"
@@ -8,7 +9,7 @@ type Props = {
 	likeCount: number
 }
 
-const Content = ({ videoUrl, commentCount, likeCount }: Props) => {
+const Content: FC<Props> = ({ videoUrl, commentCount, likeCount }) => {
 	return (
 		<S.Content>
 			<S.Wrapper>

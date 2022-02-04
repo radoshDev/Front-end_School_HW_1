@@ -3,8 +3,9 @@ import Nav from "components/Nav"
 import User from "components/User"
 import Trends from "components/Trends"
 import { Container } from "styles/CommonStyles"
+import { FC } from "react"
 
-const App = () => {
+const App: FC = () => {
 	return (
 		<div className="App">
 			<Nav />
