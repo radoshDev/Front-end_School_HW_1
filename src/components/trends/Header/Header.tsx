@@ -2,7 +2,7 @@ import { FC } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components/macro"
 import { removeHashtagFromText } from "../../../helpers/removeHashtagFromText"
-import { Hashtag } from "../../../types/trendsTypes"
+import { TextExtra as Hashtag } from "../../../types/trendsTypes"
 import Avatar from "../../ui/Avatar"
 import Hashtags from "../../ui/Hashtags"
 import UserSign from "../UserSign"
@@ -13,7 +13,7 @@ export type HeaderProps = {
 	authorNickname: string
 	description: string
 	isAuthorVerified: boolean
-	hashtags: Hashtag[]
+	hashtags?: Hashtag[]
 }
 
 const Header: FC<HeaderProps> = props => {
@@ -45,6 +45,8 @@ const S = {
 		margin-bottom: 1rem;
 
 		.news_user-info {
+			color: ${p => p.theme.main.textColor};
+
 			.description {
 				margin: 0.25rem 0;
 			}

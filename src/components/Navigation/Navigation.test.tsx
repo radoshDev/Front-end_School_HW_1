@@ -1,10 +1,11 @@
 import Navigation from "./Navigation"
 import { getUserMe } from "../../services/user/getUserMe"
 import { renderWithReduxAndRouter } from "../../test/helper/renderWithReduxAndRouter"
-import { User } from "../../types/usersTypes"
+import { UserInfo } from "../../types/usersTypes"
 import { USER_ERRORS } from "../../store/slices/constants"
+import { withTheme } from "../../test/helper/withTheme"
 
-type MockedUser = Pick<User, "avatarThumb" | "nickname" | "uniqueId">
+type MockedUser = Pick<UserInfo, "avatarThumb" | "nickname" | "uniqueId">
 const mockedUser: MockedUser = {
 	avatarThumb: "avatar-url-test",
 	nickname: "nickname-test",
@@ -20,14 +21,16 @@ const mockedGetUserMe = getUserMe as jest.MockedFunction<typeof getUserMe>
 
 describe("#Navigation", () => {
 	it("should render component with preloader", () => {
-		const { getByTestId } = renderWithReduxAndRouter(<Navigation />)
+		const { getByTestId } = renderWithReduxAndRouter(withTheme(<Navigation />))
 
 		expect(getUserMe).toBeCalled()
 		expect(getByTestId("account-circle")).toBeInTheDocument()
 	})
 	it("should render component when response fulfilled", async () => {
-		mockedGetUserMe.mockImplementation(() => Promise.resolve(mockedUser as User))
-		const { queryByTestId, findByRole, getAllByRole } = renderWithReduxAndRouter(<Navigation />)
+		mockedGetUserMe.mockImplementation(() => Promise.resolve(mockedUser as UserInfo))
+		const { queryByTestId, findByRole, getAllByRole } = renderWithReduxAndRouter(
+			withTheme(<Navigation />)
+		)
 
 		expect(getUserMe).toBeCalled()
 		expect(queryByTestId("account-circle")).toBeInTheDocument()
@@ -41,7 +44,7 @@ describe("#Navigation", () => {
 	})
 	it("should render error when response rejected", async () => {
 		mockedGetUserMe.mockImplementation(() => Promise.reject())
-		const { queryByTestId, findByText } = renderWithReduxAndRouter(<Navigation />)
+		const { queryByTestId, findByText } = renderWithReduxAndRouter(withTheme(<Navigation />))
 
 		expect(getUserMe).toBeCalled()
 		expect(queryByTestId("account-circle")).toBeInTheDocument()

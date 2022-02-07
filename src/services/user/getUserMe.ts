@@ -1,7 +1,8 @@
 import { userMeGet } from "../../api/userMeGet"
-import { User } from "../../types/usersTypes"
+import { UserInfo } from "../../types/usersTypes"
 
-export const getUserMe = async (): Promise<User> => {
+export const getUserMe = async (): Promise<UserInfo> => {
 	const response = await userMeGet()
-	return response.data.user
+	if (!response.data?.uniqueId) throw new Error(JSON.stringify(response.data))
+	return response.data
 }

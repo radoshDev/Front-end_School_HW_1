@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
 	}
 	body {
 		font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI',  Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		background-color: ${p => p.theme.main.bgColor}
 	}
 
 	a {

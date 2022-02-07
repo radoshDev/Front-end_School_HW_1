@@ -1,156 +1,169 @@
-export type User = {
+export type UserInfo = {
+	id: string
+	shortId: string
+	uniqueId: string
+	nickname: string
 	avatarLarger: string
 	avatarMedium: string
 	avatarThumb: string
+	signature: string
+	createTime: number
+	verified: boolean
+	secUid: string
+	ftc: boolean
+	relation: number
+	openFavorite: boolean
 	bioLink: {
 		link: string
 		risk: number
 	}
 	commentSetting: number
-	createTime: number
 	duetSetting: number
-	ftc: boolean
-	id: string
+	stitchSetting: number
+	privateAccount: boolean
+	secret: boolean
 	isADVirtual: boolean
-	nickname: string
-	openFavorite: boolean
-	privateAccount: boolean
-	relation: number
 	roomId: string
-	secUid: string
-	secret: boolean
-	shortId: string
-	signature: string
-	stitchSetting: number
-	uniqueId: string
-	verified: boolean
+	extraInfo: Record<string, unknown>
 }
-export type Stats = {
-	diggCount: number
-	followerCount: number
-	followingCount: number
-	heart: number
-	heartCount: number
-	videoCount: number
-}
-type Author = {
-	avatarLarger: string
-	avatarMedium: string
-	avatarThumb: string
-	commentSetting: number
-	duetSetting: number
-	ftc: boolean
+
+export type UserTrends = UserTrend[] & { error?: string }
+
+export interface UserTrend {
 	id: string
-	nickname: string
-	openFavorite: boolean
-	privateAccount: boolean
-	relation: number
-	secUid: string
-	secret: boolean
-	signature: string
-	stitchSetting: number
-	uniqueId: string
-	verified: boolean
-}
-type Challenge = {
-	coverLarger: string
-	coverMedium: string
-	coverThumb: string
 	desc: string
-	id: string
-	isCommerce: boolean
-	profileLarger: string
-	profileMedium: string
-	profileThumb: string
-	title: string
+	createTime: number
+	video: Video
+	author: Author
+	music: Music
+	challenges: Challenge[]
+	stats: Stats
+	duetInfo: DuetInfo
+	originalItem: boolean
+	officalItem: boolean
+	textExtra: TextExtra[]
+	secret: boolean
+	forFriend: boolean
+	digged: boolean
+	itemCommentStatus: number
+	showNotPass: boolean
+	vl1: boolean
+	itemMute: boolean
+	authorStats: AuthorStats
+	privateItem: boolean
+	duetEnabled: boolean
+	stitchEnabled: boolean
+	shareEnabled: boolean
+	stickersOnItem?: StickersOnItem[]
+	isAd: boolean
+	duetDisplay: number
+	stitchDisplay: number
 }
-type Music = {
-	album: string
-	authorName: string
-	coverLarge: string
-	coverMedium: string
-	coverThumb: string
+
+export interface Video {
+	id: string
+	height: number
+	width: number
 	duration: number
-	id: string
-	original: boolean
-	playUrl: string
-	title: string
-}
-type ExtraText = {
-	awemeId: string
-	end: number
-	hashtagId: string
-	hashtagName: string
-	isCommerce: false
-	secUid: string
-	start: number
-	subType: number
-	type: number
-	userId: string
-	userUniqueId: string
-}
-export type Video = {
-	bitrate: number
-	codecType: string
+	ratio: string
 	cover: string
-	definition: string
-	downloadAddr: string
-	duration: number
+	originCover: string
 	dynamicCover: string
-	encodeUserTag: string
+	playAddr: string
+	downloadAddr: string
+	shareCover: string[]
+	reflowCover: string
+	bitrate: number
 	encodedType: string
 	format: string
-	height: number
-	id: string
-	originCover: string
-	playAddr: string
-	ratio: string
-	reflowCover: string
-	shareCover: string[]
 	videoQuality: string
-	width: number
+	encodeUserTag: string
+	codecType: string
+	definition: string
 }
-type Feed = {
-	author: Author
-	authorStats: Stats
-	challenges: Challenge[]
-	createTime: number
-	desc: string
-	digged: boolean
-	duetDisplay: number
-	duetEnabled: boolean
-	duetInfo: {
-		duetFromId: string
-	}
-	forFriend: boolean
+
+export interface Author {
 	id: string
-	isAd: boolean
-	itemCommentStatus: number
-	itemMute: boolean
-	music: Music
-	officalItem: boolean
-	originalItem: boolean
-	privateItem: boolean
+	uniqueId: string
+	nickname: string
+	avatarThumb: string
+	avatarMedium: string
+	avatarLarger: string
+	signature: string
+	verified: boolean
+	secUid: string
 	secret: boolean
-	shareEnabled: boolean
-	showNotPass: boolean
-	stats: {
-		commentCount: number
-		diggCount: number
-		playCount: number
-		shareCount: number
-	}
-	stickersOnItem: Array<{ stickerText: string[]; stickerType: number }>
-	stitchDisplay: number
-	stitchEnabled: boolean
-	textExtra: ExtraText[]
-	video: Video
-	vl1: boolean
+	ftc: boolean
+	relation: number
+	openFavorite: boolean
+	commentSetting: number
+	duetSetting: number
+	stitchSetting: number
+	privateAccount: boolean
+	isADVirtual: boolean
 }
-export type UserInfo = {
-	itemList: unknown[]
-	stats: Stats
-	user: User
-	code?: number
+
+interface Music {
+	id: string
+	title: string
+	playUrl: string
+	coverThumb: string
+	coverMedium: string
+	coverLarge: string
+	authorName: string
+	original: boolean
+	duration: number
+	album: string
 }
-export type UserFeed = Array<Feed>
+
+interface Challenge {
+	id: string
+	title: string
+	desc: string
+	profileThumb: string
+	profileMedium: string
+	profileLarger: string
+	coverThumb: string
+	coverMedium: string
+	coverLarger: string
+	isCommerce: boolean
+}
+
+export interface Stats {
+	diggCount: number
+	shareCount: number
+	commentCount: number
+	playCount: number
+}
+
+interface DuetInfo {
+	duetFromId: string
+}
+
+export interface TextExtra {
+	awemeId: string
+	start: number
+	end: number
+	hashtagName: string
+	hashtagId: string
+	type: number
+	userId: string
+	isCommerce: boolean
+	userUniqueId: string
+	secUid: string
+	subType: number
+}
+
+export interface AuthorStats {
+	followingCount: number
+	followerCount: number
+	heartCount: number
+	videoCount: number
+	diggCount: number
+	heart: number
+}
+
+interface StickersOnItem {
+	stickerType: number
+	stickerText: string[]
+}

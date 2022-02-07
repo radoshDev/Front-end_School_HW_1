@@ -2,31 +2,34 @@
 import { Trend } from "../../../types/trendsTypes"
 import Card from "./Card"
 import { renderWithRouter } from "../../../test/helper/renderWithRouter"
+import { withTheme } from "../../../test/helper/withTheme"
 
 jest.mock("../VideoBlock", () => () => <video data-testid="video-mock" />)
 
 const mockTrend = {
-	authorMeta: {
-		avatar: "test-avatar-url",
-		name: "test-name",
+	author: {
+		avatarThumb: "test-avatar-url",
+		uniqueId: "test-name",
 		nickName: "test-nickname",
 		verified: true,
 	},
-	text: "test-description",
-	hashtags: [],
-	videoUrl: "test-url",
-	commentCount: 150,
-	diggCount: 500,
+	desc: "test-description",
+	textExtra: [],
+	video: { playAddr: "test-url" },
+	stats: {
+		commentCount: 150,
+		diggCount: 500,
+	},
 }
 describe("#Card", () => {
 	it("Create integration tests", () => {
 		const { getByRole, getByTestId, getByText } = renderWithRouter(
-			<Card trend={mockTrend as unknown as Trend} />
+			withTheme(<Card trend={mockTrend as unknown as Trend} />)
 		)
 		const imgElement = getByRole("img")
 		expect(imgElement).toBeInTheDocument()
-		expect(imgElement.getAttribute("src")).toBe(mockTrend.authorMeta.avatar)
-		expect(getByText(mockTrend.text)).toBeInTheDocument()
+		expect(imgElement.getAttribute("src")).toBe(mockTrend.author.avatarThumb)
+		expect(getByText(mockTrend.desc)).toBeInTheDocument()
 		expect(getByTestId("divider")).toBeInTheDocument()
 	})
 })

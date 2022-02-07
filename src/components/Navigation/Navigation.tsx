@@ -5,6 +5,7 @@ import { useAppSelector } from "../../store/hooks"
 import { authUser } from "../../store/slices/userSlice"
 import { Container } from "../../styles/CommonStyles"
 import ErrorText from "../ui/ErrorText"
+import Switcher from "../ui/Switcher"
 import Logo from "./Logo"
 import UserIcon from "./UserIcon"
 
@@ -22,6 +23,7 @@ const Navigation: FC = () => {
 					<Logo />
 					<UserIcon isLoading={isLoading} user={user} />
 					{error && <ErrorText>{error}</ErrorText>}
+					<Switcher />
 				</S.InnerMenu>
 			</Container>
 		</S.Menu>
@@ -31,7 +33,7 @@ const Navigation: FC = () => {
 const S = {
 	Menu: styled.nav`
 		border-bottom: 1px solid grey;
-		background-color: white;
+		background-color: ${p => p.theme.main.bgColor};
 		position: sticky;
 		top: 0;
 		width: 100%;

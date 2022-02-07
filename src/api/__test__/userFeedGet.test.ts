@@ -10,7 +10,8 @@ jest.mock("../api", () => {
 
 describe("#trendsFeedGet", () => {
 	it("should call apiGet with '/trending/feed'", () => {
-		userFeedGet()
-		expect(apiGet).toBeCalledWith(USER_FEED_URL)
+		const userId = "david-xs"
+		userFeedGet(userId)
+		expect(apiGet).toBeCalledWith(`${USER_FEED_URL}/${userId}`)
 	})
 })

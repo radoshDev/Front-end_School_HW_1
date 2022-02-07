@@ -1,4 +1,5 @@
 import { renderWithRouter } from "../../../test/helper/renderWithRouter"
+import { withTheme } from "../../../test/helper/withTheme"
 import Header, { HeaderProps } from "./Header"
 
 describe("#Header", () => {
@@ -11,7 +12,7 @@ describe("#Header", () => {
 			hashtags: [],
 			isAuthorVerified: false,
 		}
-		const { getByText, getByRole } = renderWithRouter(<Header {...mockProps} />)
+		const { getByText, getByRole } = renderWithRouter(withTheme(<Header {...mockProps} />))
 
 		expect(getByRole("img", { name: mockProps.authorName })).toBeInTheDocument()
 		expect(getByText(mockProps.authorName)).toBeInTheDocument()

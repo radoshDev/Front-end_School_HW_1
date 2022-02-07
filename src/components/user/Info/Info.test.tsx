@@ -1,8 +1,12 @@
 import { render, screen } from "@testing-library/react"
-import { User } from "../../../types/usersTypes"
+import { withTheme } from "../../../test/helper/withTheme"
+import { UserInfo } from "../../../types/usersTypes"
 import Info from "./Info"
 
-const mockUser: Pick<User, "uniqueId" | "verified" | "nickname" | "signature" | "avatarMedium"> = {
+const mockUser: Pick<
+	UserInfo,
+	"uniqueId" | "verified" | "nickname" | "signature" | "avatarMedium"
+> = {
 	uniqueId: "test-id",
 	verified: false,
 	nickname: "test-nickname",
@@ -11,7 +15,7 @@ const mockUser: Pick<User, "uniqueId" | "verified" | "nickname" | "signature" | 
 }
 describe("#Info", () => {
 	it("should render content when isLoading falsy", () => {
-		render(<Info user={mockUser as User} isLoading={false} />)
+		render(withTheme(<Info user={mockUser as UserInfo} isLoading={false} />))
 		const avatarImg = screen.getByAltText(mockUser.nickname)
 		expect(avatarImg.getAttribute("src")).toBe(mockUser.avatarMedium)
 		expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
@@ -23,7 +27,7 @@ describe("#Info", () => {
 		expect(screen.getByText(mockUser.signature)).toBeInTheDocument()
 	})
 	it("should render preloader when isLoading truthy", () => {
-		render(<Info user={mockUser as User} isLoading />)
+		render(withTheme(<Info user={mockUser as UserInfo} isLoading />))
 
 		expect(screen.getAllByTestId("rectangle-preloader").length).toBeGreaterThan(1)
 		expect(screen.queryByAltText(mockUser.nickname)).not.toBeInTheDocument()

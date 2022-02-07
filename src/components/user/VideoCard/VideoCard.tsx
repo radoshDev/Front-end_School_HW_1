@@ -1,14 +1,15 @@
 import { ReactElement, useState } from "react"
 import styled from "styled-components/macro"
 import { abbreviateNumber } from "../../../helpers/abbreviateNumber"
-import { Trend } from "../../../types/trendsTypes"
+import { Video as VideoT, Stats } from "../../../types/usersTypes"
 import Modal from "../../ui/Modal"
 import Video from "../../ui/Video"
 
 type Props = {
-	videoInfo: Trend
+	videoInfo: VideoT
+	stats: Stats
 }
-const VideoCard = ({ videoInfo }: Props): ReactElement => {
+const VideoCard = ({ videoInfo, stats }: Props): ReactElement => {
 	const [isVideoShow, setIsVideoShow] = useState(false)
 	const [isModal, setIsModal] = useState(false)
 
@@ -23,14 +24,14 @@ const VideoCard = ({ videoInfo }: Props): ReactElement => {
 				}}
 				onMouseEnter={() => setIsVideoShow(true)}
 				onMouseLeave={() => setIsVideoShow(false)}>
-				<S.Title>{abbreviateNumber(videoInfo.playCount)} views</S.Title>
-				<S.VideoWrapper imgUrl={videoInfo.covers.default} data-testid="video-cover">
-					{isVideoShow && <Video url={videoInfo.videoUrl} />}
+				<S.Title>{abbreviateNumber(stats.playCount)} views</S.Title>
+				<S.VideoWrapper imgUrl={videoInfo.cover} data-testid="video-cover">
+					{isVideoShow && <Video url={videoInfo.playAddr} />}
 				</S.VideoWrapper>
 			</S.Card>
 			{isModal && (
 				<Modal setIsModal={setIsModal}>
-					<Video url={videoInfo.videoUrl} />
+					<Video url={videoInfo.playAddr} />
 				</Modal>
 			)}
 		</>

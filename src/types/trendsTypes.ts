@@ -1,66 +1,165 @@
-type AuthorMeta = {
-	avatar: string
-	digg: number
-	fans: number
-	following: number
-	heart: number
+export interface Trend {
 	id: string
-	name: string
-	nickName: string
-	secUid: string
-	signature: string
-	verified: boolean
-	video: number
-}
-type Covers = {
-	default: string
-	dynamic: string
-	origin: string
-}
-type MusicMeta = {
-	coverLarge: string
-	coverMedium: string
-	coverThumb: string
-	duration: number
-	musicAlbum: string
-	musicAuthor: string
-	musicId: string
-	musicName: string
-	musicOriginal: boolean
-	playUrl: string
-}
-type VideoMeta = {
-	duration: number
-	height: number
-	width: number
-}
-export type Hashtag = {
-	id: string
-	name: string
-	title: string
-	cover: string
-}
-export type Trend = {
-	authorMeta: AuthorMeta
-	commentCount: number
-	covers: Covers
+	desc: string
 	createTime: number
-	diggCount: number
-	downloaded: boolean
-	effectStickers: Array<{ id: string; name: string }>
-	hashtags: Hashtag[]
-	id: string
-	mentions: unknown[]
-	musicMeta: MusicMeta
-	playCount: number
-	secretID: string
-	shareCount: number
-	text: string
-	videoApiUrlNoWaterMark: string
-	videoMeta: VideoMeta
-	videoUrl: string
-	videoUrlNoWaterMark: string
-	webVideoUrl: string
+	video: Video
+	author: Author
+	music: Music
+	challenges?: Challenge[]
+	stats: Stats
+	duetInfo: DuetInfo
+	originalItem: boolean
+	officalItem: boolean
+	textExtra?: TextExtra[]
+	secret: boolean
+	forFriend: boolean
+	digged: boolean
+	itemCommentStatus: number
+	showNotPass: boolean
+	vl1: boolean
+	itemMute: boolean
+	authorStats: AuthorStats
+	privateItem: boolean
+	duetEnabled: boolean
+	stitchEnabled: boolean
+	shareEnabled: boolean
+	isAd: boolean
+	duetDisplay: number
+	stitchDisplay: number
+	stickersOnItem?: StickersOnItem[]
+	effectStickers?: EffectSticker[]
 }
 
-export type Trends = Trend[]
+export interface Video {
+	id: string
+	height: number
+	width: number
+	duration: number
+	ratio: string
+	cover: string
+	originCover: string
+	dynamicCover: string
+	playAddr: string
+	downloadAddr: string
+	shareCover: string[]
+	reflowCover: string
+	bitrate: number
+	encodedType: string
+	format: string
+	videoQuality: string
+	encodeUserTag: string
+	codecType: string
+	definition: string
+	bitrateInfo: BitrateInfo[]
+}
+
+interface BitrateInfo {
+	GearName: string
+	Bitrate: number
+	QualityType: number
+	PlayAddr: PlayAddr
+	CodecType: string
+}
+
+interface PlayAddr {
+	Uri: string
+	UrlList: string[]
+	DataSize: number
+	UrlKey: string
+	FileHash: string
+	FileCs: string
+}
+
+interface Author {
+	id: string
+	uniqueId: string
+	nickname: string
+	avatarThumb: string
+	avatarMedium: string
+	avatarLarger: string
+	signature: string
+	verified: boolean
+	secUid: string
+	secret: boolean
+	ftc: boolean
+	relation: number
+	openFavorite: boolean
+	commentSetting: number
+	duetSetting: number
+	stitchSetting: number
+	privateAccount: boolean
+	isADVirtual: boolean
+	roomId?: string
+}
+
+interface Music {
+	id: string
+	title: string
+	playUrl: string
+	coverThumb: string
+	coverMedium: string
+	coverLarge: string
+	authorName: string
+	original: boolean
+	duration: number
+	album: string
+}
+
+interface Challenge {
+	id: string
+	title: string
+	desc: string
+	profileThumb: string
+	profileMedium: string
+	profileLarger: string
+	coverThumb: string
+	coverMedium: string
+	coverLarger: string
+	isCommerce: boolean
+}
+
+export interface Stats {
+	diggCount: number
+	shareCount: number
+	commentCount: number
+	playCount: number
+}
+
+interface DuetInfo {
+	duetFromId: string
+}
+
+export interface TextExtra {
+	awemeId: string
+	start: number
+	end: number
+	hashtagName: string
+	hashtagId: string
+	type: number
+	userId: string
+	isCommerce: boolean
+	userUniqueId: string
+	secUid: string
+	subType: number
+}
+
+export interface AuthorStats {
+	followingCount: number
+	followerCount: number
+	heartCount: number
+	videoCount: number
+	diggCount: number
+	heart: number
+}
+
+interface StickersOnItem {
+	stickerType: number
+	stickerText: string[]
+}
+
+interface EffectSticker {
+	name: string
+	ID: string
+}
+
+export type Trends = Trend[] & { error?: string }

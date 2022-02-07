@@ -1,12 +1,12 @@
 import { FC } from "react"
 import styled from "styled-components"
-import { User } from "../../../types/usersTypes"
+import { UserInfo } from "../../../types/usersTypes"
 import Rectangle from "../../ui/Rectangle"
 import VerifiedIcon from "../../ui/VerifiedIcon"
 
 type Props = {
 	isLoading?: boolean
-	user: User
+	user: UserInfo
 }
 
 const About: FC<Props> = ({ isLoading, user }) => {
@@ -30,6 +30,7 @@ const About: FC<Props> = ({ isLoading, user }) => {
 
 const S = {
 	About: styled.div`
+		color: ${p => p.theme.main.textColor};
 		h1 {
 			svg {
 				vertical-align: middle;

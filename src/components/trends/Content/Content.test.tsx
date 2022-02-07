@@ -1,5 +1,6 @@
 /* eslint-disable react/function-component-definition */
 import { render, screen } from "@testing-library/react"
+import { withTheme } from "../../../test/helper/withTheme"
 import Content, { ContentProps } from "./Content"
 
 jest.mock("../VideoBlock", () => () => <video data-testid="video-block" />)
@@ -11,7 +12,7 @@ describe("#Content", () => {
 			likeCount: 450,
 			videoUrl: "test-video-url",
 		}
-		render(<Content {...mockProps} />)
+		render(withTheme(<Content {...mockProps} />))
 		expect(screen.getByTestId("video-block")).toBeInTheDocument()
 		expect(screen.getByText(mockProps.commentCount)).toBeInTheDocument()
 		expect(screen.getByText(mockProps.likeCount)).toBeInTheDocument()

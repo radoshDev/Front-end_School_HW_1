@@ -11,11 +11,11 @@ import VideoCard from "../VideoCard"
 const VideoGrid: FC = () => {
 	const dispatch = useDispatch()
 	const { data: feeds, isLoading, error } = useAppSelector(s => s.user.feed)
-	const userId = useAppSelector(s => s.user.info.data?.user?.uniqueId)
+	const userId = useAppSelector(s => s.user.info.data?.uniqueId)
 	const { id } = useParams()
 	useEffect(() => {
-		if (userId !== id) {
-			dispatch(loadUserFeed())
+		if (id && userId !== id) {
+			dispatch(loadUserFeed(id))
 		}
 	}, [dispatch, userId, id])
 
@@ -23,7 +23,11 @@ const VideoGrid: FC = () => {
 
 	return (
 		<S.VideoGrid>
-			{isLoading ? <Preloader /> : feeds.map(feed => <VideoCard videoInfo={feed} key={feed.id} />)}
+			{isLoading ? (
+				<Preloader />
+			) : (
+				feeds.map(feed => <VideoCard videoInfo={feed.video} stats={feed.stats} key={feed.id} />)
+			)}
 		</S.VideoGrid>
 	)
 }

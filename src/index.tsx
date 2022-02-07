@@ -1,15 +1,16 @@
 import ReactDOM from "react-dom"
 import { BrowserRouter } from "react-router-dom"
 import { Provider } from "react-redux"
-import { GlobalStyles } from "./styles/GlobalStyles"
 import App from "./components/App"
 import { store } from "./store/store"
+import ThemeWrapper from "./styles/ThemeWrapper"
 
 ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter>
-			<GlobalStyles />
-			<App />
+			<ThemeWrapper>
+				<App />
+			</ThemeWrapper>
 		</BrowserRouter>
 	</Provider>,
 	document.getElementById("root")

@@ -1,14 +1,15 @@
 import { FC } from "react"
 import { FaBolt } from "react-icons/fa"
 import { Link } from "react-router-dom"
-import styled from "styled-components/macro"
+import styled, { useTheme } from "styled-components"
 
 export const TEXT_LOGO = "TikTuk"
 
 const Logo: FC = () => {
+	const theme = useTheme()
 	return (
 		<S.Logo to="/">
-			<FaBolt />
+			<FaBolt color={theme.main.textColor} />
 			{TEXT_LOGO}
 		</S.Logo>
 	)
@@ -21,6 +22,7 @@ export const S = {
 		font-weight: bold;
 		font-size: 1.5rem;
 		text-shadow: 2px 0 2px rgb(214, 54, 81);
+		color: ${p => p.theme.main.textColor};
 	`,
 }
 

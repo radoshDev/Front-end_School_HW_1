@@ -1,12 +1,12 @@
 /* eslint-disable unicorn/no-for-loop */
 import { renderWithRouter } from "../../../test/helper/renderWithRouter"
-import { Hashtag } from "../../../types/trendsTypes"
+import { TextExtra as Hashtag } from "../../../types/trendsTypes"
 import Hashtags from "./Hashtags"
 
 const mockedHashtagList = [
-	{ id: "test1", name: "test1-name" },
-	{ id: "test2", name: "test2-name" },
-	{ id: "test3", name: "test3-name" },
+	{ hashtagId: "test1", hashtagName: "test1-name" },
+	{ hashtagId: "test2", hashtagName: "test2-name" },
+	{ hashtagId: "test3", hashtagName: "test3-name" },
 ] as Hashtag[]
 
 describe("#Hashtags", () => {
@@ -15,8 +15,8 @@ describe("#Hashtags", () => {
 		const hashLinks = getAllByRole("link")
 		expect(hashLinks).toHaveLength(3)
 		for (let i = 0; i < hashLinks.length; i += 1) {
-			expect(hashLinks[i]).toHaveTextContent(mockedHashtagList[i].name)
-			expect(hashLinks[i].getAttribute("href")).toBe(`/tag/${mockedHashtagList[i].name}`)
+			expect(hashLinks[i]).toHaveTextContent(mockedHashtagList[i].hashtagName)
+			expect(hashLinks[i].getAttribute("href")).toBe(`/tag/${mockedHashtagList[i].hashtagName}`)
 		}
 	})
 	it("shouldn't render hash links when pass empty array", () => {

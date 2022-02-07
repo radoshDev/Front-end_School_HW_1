@@ -1,9 +1,9 @@
 import { AxiosResponse } from "axios"
-import { Trends } from "../types/trendsTypes"
+import { UserTrends } from "../types/usersTypes"
 import { apiGet } from "./api"
 
-export const USER_FEED_URL = "/trending/feed"
+export const USER_FEED_URL = "/user/feed"
 
-export const userFeedGet = (): Promise<AxiosResponse<Trends>> => {
-	return apiGet(USER_FEED_URL)
+export const userFeedGet = (userId: string): Promise<AxiosResponse<UserTrends>> => {
+	return apiGet(`${USER_FEED_URL}/${userId}`)
 }
