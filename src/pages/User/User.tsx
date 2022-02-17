@@ -17,15 +17,15 @@ const UserPage: FC = () => {
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
-		if (id && id !== userInfo?.user?.uniqueId) {
+		if (id && id !== userInfo?.uniqueId) {
 			dispatch(loadUserInfo(id))
 		}
 	}, [id, dispatch])
 	if (error) return <ErrorText>{error}</ErrorText>
 	return (
 		<>
-			<Info isLoading={isInfoLoading} user={userInfo.user} />
-			<Statistics isLoading={isInfoLoading} stats={userInfo.stats} />
+			<Info isLoading={isInfoLoading} user={userInfo} />
+			<Statistics />
 			<Divider lineHeight={4}>
 				<FaVideo size={25} />
 				Videos

@@ -11,7 +11,7 @@ jest.mock("../../api/userInfoGet", () => ({
 const mockUserInfoGet = userInfoGet as jest.MockedFunction<typeof userInfoGet>
 
 describe("#getUserInfo", () => {
-	const mockResponse = { data: "test" }
+	const mockResponse = { data: { uniqueId: "test" } }
 	const mockUsername = "test-user"
 	it("should call #userInfoGet", async () => {
 		mockUserInfoGet.mockImplementation(() =>
@@ -33,5 +33,15 @@ describe("#getUserInfo", () => {
 		expect(async () => {
 			await getUserInfo(mockUsername)
 		}).rejects.toThrow("Test error")
+	})
+	it("should throw error when response has no uniqueId value", async () => {
+		const mockFailResponse = { data: "Something went wrong" }
+		mockUserInfoGet.mockImplementation(() =>
+			Promise.resolve(mockFailResponse as unknown as AxiosResponse<UserInfo>)
+		)
+
+		expect(async () => {
+			await getUserInfo(mockUsername)
+		}).rejects.toThrow(mockFailResponse.data)
 	})
 })

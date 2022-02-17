@@ -13,7 +13,8 @@ const mockUserMeGet = userMeGet as jest.MockedFunction<typeof userMeGet>
 describe("#getUserMe", () => {
 	const mockResponse = {
 		data: {
-			user: "test-user",
+			uniqueId: "dave.xp",
+			nickname: "Dave XP",
 		},
 	}
 	it("should call #userMeGet", async () => {
@@ -28,7 +29,7 @@ describe("#getUserMe", () => {
 			Promise.resolve(mockResponse as unknown as AxiosResponse<UserInfo>)
 		)
 
-		expect(await getUserMe()).toBe(mockResponse.data.user)
+		expect(await getUserMe()).toEqual(mockResponse.data)
 	})
 	it("should throw error when promise rejected", async () => {
 		mockUserMeGet.mockImplementation(() => Promise.reject(new Error("Test error")))

@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom"
 import { RootState } from "../../store/store"
 import userReducer from "../../store/slices/userSlice"
 import trendsReducer from "../../store/slices/trendsSlice"
+import themeReducer from "../../store/slices/themeSlice"
 
 type RenderWithReduxProps = {
 	preloadedState?: RootState
@@ -19,7 +20,7 @@ export const renderWithReduxAndRouter = (
 	{
 		preloadedState,
 		store = configureStore({
-			reducer: { user: userReducer, trends: trendsReducer },
+			reducer: { user: userReducer, trends: trendsReducer, theme: themeReducer },
 			preloadedState,
 		}),
 		route = "/",

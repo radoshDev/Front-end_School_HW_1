@@ -1,12 +1,12 @@
 import { FC } from "react"
 import styled from "styled-components/macro"
-import { User } from "../../../types/usersTypes"
+import { UserInfo } from "../../../types/usersTypes"
 import Avatar from "../../ui/Avatar"
 import About from "../About"
 
 type Props = {
 	isLoading: boolean
-	user: User
+	user: UserInfo
 }
 
 const Info: FC<Props> = ({ isLoading, user }) => {

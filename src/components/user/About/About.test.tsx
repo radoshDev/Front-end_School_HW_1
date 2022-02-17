@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react"
-import { User } from "../../../types/usersTypes"
+import { withTheme } from "../../../test/helper/withTheme"
+import { UserInfo } from "../../../types/usersTypes"
 import About from "./About"
 
-let mockUser: Pick<User, "uniqueId" | "verified" | "nickname" | "signature">
+let mockUser: Pick<UserInfo, "uniqueId" | "verified" | "nickname" | "signature">
 describe("#About", () => {
 	beforeEach(() => {
 		mockUser = {
@@ -13,7 +14,7 @@ describe("#About", () => {
 		}
 	})
 	it("should render component when isLoading not passed", () => {
-		render(<About user={mockUser as User} />)
+		render(withTheme(<About user={mockUser as UserInfo} />))
 		expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
 			new RegExp(mockUser.uniqueId)
 		)
@@ -24,17 +25,17 @@ describe("#About", () => {
 	})
 	it("should render verified icon", () => {
 		mockUser.verified = true
-		render(<About user={mockUser as User} />)
+		render(withTheme(<About user={mockUser as UserInfo} />))
 		expect(screen.getByTestId("verified-icon")).toBeInTheDocument()
 	})
 	it("should render preloader when isLoading passed truthy", () => {
 		mockUser.verified = true
-		render(<About user={{} as User} isLoading />)
+		render(withTheme(<About user={{} as UserInfo} isLoading />))
 		expect(screen.getByTestId("rectangle-preloader")).toBeInTheDocument()
 	})
 	it("should render content when isLoading passed falsy", () => {
 		mockUser.verified = true
-		render(<About user={{} as User} isLoading={false} />)
+		render(withTheme(<About user={{} as UserInfo} isLoading={false} />))
 		expect(screen.queryByTestId("rectangle-preloader")).not.toBeInTheDocument()
 		expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument()
 	})

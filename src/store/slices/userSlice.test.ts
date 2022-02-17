@@ -1,11 +1,11 @@
 import { AnyAction } from "@reduxjs/toolkit"
-import { User, UserInfo } from "../../types/usersTypes"
+import { UserInfo } from "../../types/usersTypes"
 import { USER_ERRORS } from "./constants"
 import reducer, { loadUserFeed, loadUserInfo } from "./userSlice"
 
 const mockInitialState = {
 	auth: {
-		data: {} as User,
+		data: {} as UserInfo,
 		isLoading: true,
 		error: "",
 	},
@@ -29,7 +29,7 @@ describe("#userSlice", () => {
 		const action = { type: loadUserFeed.pending }
 		const mockState = {
 			auth: {
-				data: {} as User,
+				data: {} as UserInfo,
 				isLoading: true,
 				error: "",
 			},
@@ -50,7 +50,7 @@ describe("#userSlice", () => {
 		const action = { type: loadUserFeed.fulfilled, payload: [{ id: "test-id" }] }
 		const mockState = {
 			auth: {
-				data: {} as User,
+				data: {} as UserInfo,
 				isLoading: true,
 				error: "",
 			},
@@ -71,7 +71,7 @@ describe("#userSlice", () => {
 		const action = { type: loadUserFeed.rejected }
 		const mockState = {
 			auth: {
-				data: {} as User,
+				data: {} as UserInfo,
 				isLoading: true,
 				error: "",
 			},
@@ -92,7 +92,7 @@ describe("#userSlice", () => {
 		const action = { type: loadUserInfo.pending }
 		const mockState = {
 			auth: {
-				data: {} as User,
+				data: {} as UserInfo,
 				isLoading: true,
 				error: "",
 			},
@@ -113,7 +113,7 @@ describe("#userSlice", () => {
 		const action = { type: loadUserInfo.fulfilled, payload: { user: "test-user" } }
 		const mockState = {
 			auth: {
-				data: {} as User,
+				data: {} as UserInfo,
 				isLoading: true,
 				error: "",
 			},
@@ -134,7 +134,7 @@ describe("#userSlice", () => {
 		const action = { type: loadUserInfo.rejected }
 		const mockState = {
 			auth: {
-				data: {} as User,
+				data: {} as UserInfo,
 				isLoading: true,
 				error: "",
 			},

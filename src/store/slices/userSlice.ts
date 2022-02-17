@@ -2,8 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { getUserFeeds } from "../../services/user/getUserFeeds"
 import { getUserInfo } from "../../services/user/getUserInfo"
 import { getUserMe } from "../../services/user/getUserMe"
-import { Trends } from "../../types/trendsTypes"
-import { User, UserInfo } from "../../types/usersTypes"
+import { UserInfo, UserTrends } from "../../types/usersTypes"
 import { USER_ERRORS } from "./constants"
 
 export const authUser = createAsyncThunk("authUser", getUserMe)
@@ -13,7 +12,7 @@ export const loadUserFeed = createAsyncThunk("loadUserFeed", getUserFeeds)
 type State = typeof initialState
 const initialState = {
 	auth: {
-		data: {} as User,
+		data: {} as UserInfo,
 		isLoading: true,
 		error: "",
 	},
@@ -23,7 +22,7 @@ const initialState = {
 		error: "",
 	},
 	feed: {
-		data: [] as Trends,
+		data: [] as UserTrends,
 		isLoading: true,
 		error: "",
 	},
@@ -35,43 +34,41 @@ const userSlice = createSlice({
 	reducers: {},
 	extraReducers: builder =>
 		builder
-			.addCase(authUser.pending, (state: State) => {
+			.addCase(authUser.pending, state => {
 				state.auth.isLoading = true
 				state.auth.error = ""
 			})
-			.addCase(authUser.fulfilled, (state: State, action: PayloadAction<User>) => {
-				if (action.payload) {
-					state.auth.data = action.payload
-				}
+			.addCase(authUser.fulfilled, (state, action: PayloadAction<UserInfo>) => {
+				state.auth.data = action.payload
 				state.auth.isLoading = false
 				state.auth.error = ""
 			})
-			.addCase(authUser.rejected, (state: State) => {
+			.addCase(authUser.rejected, state => {
 				state.auth.error = USER_ERRORS.auth
 				state.auth.isLoading = false
 			})
-			.addCase(loadUserInfo.pending, (state: State) => {
+			.addCase(loadUserInfo.pending, state => {
 				state.info.isLoading = true
 				state.info.error = ""
 			})
-			.addCase(loadUserInfo.fulfilled, (state: State, action: PayloadAction<UserInfo>) => {
+			.addCase(loadUserInfo.fulfilled, (state, action: PayloadAction<UserInfo>) => {
 				state.info.data = action.payload
 				state.info.isLoading = false
 				state.info.error = ""
 			})
-			.addCase(loadUserInfo.rejected, (state: State) => {
+			.addCase(loadUserInfo.rejected, state => {
 				state.info.error = USER_ERRORS.info
 				state.info.isLoading = false
 			})
-			.addCase(loadUserFeed.pending, (state: State) => {
+			.addCase(loadUserFeed.pending, state => {
 				state.feed.isLoading = true
 				state.feed.error = ""
 			})
-			.addCase(loadUserFeed.fulfilled, (state: State, action: PayloadAction<Trends>) => {
+			.addCase(loadUserFeed.fulfilled, (state, action: PayloadAction<UserTrends>) => {
 				state.feed.data = action.payload
 				state.feed.isLoading = false
 			})
-			.addCase(loadUserFeed.rejected, (state: State) => {
+			.addCase(loadUserFeed.rejected, state => {
 				state.feed.error = USER_ERRORS.feeds
 				state.feed.isLoading = false
 			}),

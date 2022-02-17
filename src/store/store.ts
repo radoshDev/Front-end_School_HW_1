@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import userReducer from "./slices/userSlice"
 import trendsReducer from "./slices/trendsSlice"
+import themeReducer from "./slices/themeSlice"
 
 export const store = configureStore({
 	reducer: {
 		user: userReducer,
 		trends: trendsReducer,
+		theme: themeReducer,
 	},
 })
 
