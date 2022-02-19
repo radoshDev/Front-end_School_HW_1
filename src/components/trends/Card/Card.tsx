@@ -12,17 +12,17 @@ const Card: FC<CardProps> = ({ trend }) => {
 	return (
 		<div className="trend-card">
 			<Header
-				avatarUrl={trend.author.avatarThumb}
-				authorName={trend.author.uniqueId}
-				authorNickname={trend.author.nickname}
-				description={trend.desc}
-				isAuthorVerified={trend.author.verified}
-				hashtags={trend.textExtra}
+				avatarUrl={trend.authorMeta.avatar}
+				authorName={trend.authorMeta.name}
+				authorNickname={trend.authorMeta.nickName}
+				description={trend.text}
+				isAuthorVerified={trend.authorMeta.verified}
+				hashtags={trend.hashtags}
 			/>
 			<Content
-				videoUrl={trend.video.playAddr}
-				commentCount={trend.stats.commentCount}
-				likeCount={trend.stats.diggCount}
+				videoUrl={trend.videoUrl}
+				commentCount={trend.commentCount}
+				likeCount={trend.diggCount}
 			/>
 			<Divider lineHeight={2} />
 		</div>

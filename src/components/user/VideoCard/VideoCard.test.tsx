@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { Video } from "../../../types/usersTypes"
+import { UserTrend } from "../../../types/usersTypes"
 import VideoCard from "./VideoCard"
 
 jest.mock("../../ui/Video", () => () => <video data-testid="video-id" />)
@@ -18,18 +18,18 @@ const mockVideoInfo = {
 		cover: "test-cover1",
 		playAddr: "test-video-url1",
 	},
-}
+} as UserTrend
 
 describe("#VideoCard", () => {
 	it("should render component", () => {
-		render(<VideoCard videoInfo={mockVideoInfo.video as Video} stats={mockVideoInfo.stats} />)
+		render(<VideoCard userTrend={mockVideoInfo} />)
 		expect(screen.getByText(`${mockVideoInfo.stats.playCount} views`)).toBeInTheDocument()
 		expect(screen.getByTestId("video-cover")).toBeInTheDocument()
 		expect(screen.queryByTestId("modal-overlay")).not.toBeInTheDocument()
 		expect(screen.queryByTestId("video-id")).not.toBeInTheDocument()
 	})
 	it("should show video when hover on cover", () => {
-		render(<VideoCard videoInfo={mockVideoInfo.video as Video} stats={mockVideoInfo.stats} />)
+		render(<VideoCard userTrend={mockVideoInfo} />)
 
 		const coverElement = screen.getByTestId("video-cover")
 		expect(coverElement).toBeInTheDocument()
@@ -40,7 +40,7 @@ describe("#VideoCard", () => {
 		expect(screen.queryByTestId("video-id")).not.toBeInTheDocument()
 	})
 	it("should show modal when clicked at video cover", () => {
-		render(<VideoCard videoInfo={mockVideoInfo.video as Video} stats={mockVideoInfo.stats} />)
+		render(<VideoCard userTrend={mockVideoInfo} />)
 
 		const coverElement = screen.getByTestId("video-cover")
 		expect(coverElement).toBeInTheDocument()

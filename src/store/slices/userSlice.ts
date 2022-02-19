@@ -9,10 +9,9 @@ export const authUser = createAsyncThunk("authUser", getUserMe)
 export const loadUserInfo = createAsyncThunk("loadUserInfo", getUserInfo)
 export const loadUserFeed = createAsyncThunk("loadUserFeed", getUserFeeds)
 
-type State = typeof initialState
 const initialState = {
 	auth: {
-		data: {} as UserInfo,
+		data: {} as UserInfo["user"],
 		isLoading: true,
 		error: "",
 	},
@@ -38,7 +37,7 @@ const userSlice = createSlice({
 				state.auth.isLoading = true
 				state.auth.error = ""
 			})
-			.addCase(authUser.fulfilled, (state, action: PayloadAction<UserInfo>) => {
+			.addCase(authUser.fulfilled, (state, action: PayloadAction<UserInfo["user"]>) => {
 				state.auth.data = action.payload
 				state.auth.isLoading = false
 				state.auth.error = ""

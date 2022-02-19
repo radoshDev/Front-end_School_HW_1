@@ -11,7 +11,7 @@ jest.mock("../../api/userInfoGet", () => ({
 const mockUserInfoGet = userInfoGet as jest.MockedFunction<typeof userInfoGet>
 
 describe("#getUserInfo", () => {
-	const mockResponse = { data: { uniqueId: "test" } }
+	const mockResponse = { data: { user: { uniqueId: "test" } } }
 	const mockUsername = "test-user"
 	it("should call #userInfoGet", async () => {
 		mockUserInfoGet.mockImplementation(() =>

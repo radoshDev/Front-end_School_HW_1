@@ -2,10 +2,10 @@
 import { screen } from "@testing-library/react"
 import { renderWithRedux } from "../../../test/helper/renderWithRedux"
 import { withTheme } from "../../../test/helper/withTheme"
-import { AuthorStats } from "../../../types/usersTypes"
+import { UserInfo } from "../../../types/usersTypes"
 import Statistics from "./Statistics"
 
-const mockStats: Pick<AuthorStats, "followerCount" | "followingCount" | "heartCount"> = {
+const mockStats: Pick<UserInfo["stats"], "followerCount" | "followingCount" | "heartCount"> = {
 	followerCount: 150,
 	followingCount: 200,
 	heartCount: 50,

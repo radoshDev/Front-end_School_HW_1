@@ -7,7 +7,7 @@ import Avatar from "../../ui/Avatar"
 
 type Props = {
 	isLoading: boolean
-	user: UserInfo
+	user: UserInfo["user"]
 }
 
 const UserIcon = ({ isLoading, user }: Props): ReactElement => {

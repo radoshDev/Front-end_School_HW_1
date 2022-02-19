@@ -6,7 +6,7 @@ import About from "../About"
 
 type Props = {
 	isLoading: boolean
-	user: UserInfo
+	user: UserInfo["user"]
 }
 
 const Info: FC<Props> = ({ isLoading, user }) => {

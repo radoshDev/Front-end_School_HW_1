@@ -9,7 +9,7 @@ jest.mock("../api", () => {
 })
 
 describe("#userInfoGet", () => {
-	it("should call 'apiGet' with right path", () => {
+	it.skip("should call 'apiGet' with right path", () => {
 		const user = "test-data"
 		userInfoGet(user)
 		expect(apiGet).toBeCalledWith(`${USER_INFO_PATH}${user}`)
