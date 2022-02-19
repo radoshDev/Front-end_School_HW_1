@@ -6,6 +6,7 @@ const mockTheme: DefaultTheme = {
 		color: "#212121",
 		textColor: "#ebebeb",
 		bgColor: "hsl(222deg 14% 18%);",
+		bgImageColor: "lightgreen",
 	},
 	secondary: {
 		color: "#fff",

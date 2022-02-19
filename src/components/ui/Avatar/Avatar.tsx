@@ -24,7 +24,7 @@ const S = {
 		height: ${p => `${p.size}px`};
 		border-radius: 50%;
 		overflow: hidden;
-		background-color: lightgray;
+		background-color: ${p => p.theme.main.bgImageColor};
 		display: flex;
 		align-items: center;
 		img {

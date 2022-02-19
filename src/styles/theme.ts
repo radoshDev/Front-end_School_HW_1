@@ -5,6 +5,7 @@ const lightTheme: Theme = {
 		color: "#00000",
 		textColor: "#212121",
 		bgColor: "#FAFAFA",
+		bgImageColor: "#a5ffb4",
 	},
 	secondary: {
 		color: "#757575",
@@ -16,6 +17,7 @@ const darkTheme: Theme = {
 		color: "#212121",
 		textColor: "#ebebeb",
 		bgColor: "hsl(222deg 14% 18%);",
+		bgImageColor: "#a5ffb4",
 	},
 	secondary: {
 		color: "#fff",

@@ -7,6 +7,7 @@ declare module "styled-components" {
 			color: string
 			textColor: string
 			bgColor: string
+			bgImageColor: string
 		}
 		secondary: {
 			color: string

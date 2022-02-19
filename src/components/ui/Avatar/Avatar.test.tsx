@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react"
+import { withTheme } from "../../../test/helper/withTheme"
 import Avatar, { AvatarProps } from "./Avatar"
 
 describe("#Avatar", () => {
 	it("should render preloader when truthy isLoading", () => {
-		render(<Avatar {...({ isLoading: true } as AvatarProps)} />)
+		render(withTheme(<Avatar {...({ isLoading: true } as AvatarProps)} />))
 		expect(screen.getByTestId("rectangle-preloader")).toBeInTheDocument()
 		expect(screen.queryByRole("img")).not.toBeInTheDocument()
 	})
@@ -14,7 +15,7 @@ describe("#Avatar", () => {
 			size: 40,
 			isLoading: false,
 		}
-		render(<Avatar {...mockProps} />)
+		render(withTheme(<Avatar {...mockProps} />))
 
 		expect(screen.getByAltText(mockProps.altText)).toBeInTheDocument()
 		expect(screen.getByRole("img").getAttribute("src")).toBe(mockProps.avatarUrl)
@@ -26,7 +27,7 @@ describe("#Avatar", () => {
 			avatarUrl: "test-url",
 			size: 40,
 		}
-		render(<Avatar {...mockProps} />)
+		render(withTheme(<Avatar {...mockProps} />))
 
 		expect(screen.getByAltText(mockProps.altText)).toBeInTheDocument()
 		expect(screen.getByRole("img").getAttribute("src")).toBe(mockProps.avatarUrl)
