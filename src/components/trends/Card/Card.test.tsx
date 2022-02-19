@@ -7,20 +7,19 @@ import { withTheme } from "../../../test/helper/withTheme"
 jest.mock("../VideoBlock", () => () => <video data-testid="video-mock" />)
 
 const mockTrend = {
-	author: {
-		avatarThumb: "test-avatar-url",
-		uniqueId: "test-name",
+	authorMeta: {
+		avatar: "test-avatar-url",
+		name: "test-name",
 		nickName: "test-nickname",
 		verified: true,
 	},
-	desc: "test-description",
-	textExtra: [],
-	video: { playAddr: "test-url" },
-	stats: {
-		commentCount: 150,
-		diggCount: 500,
-	},
+	text: "test-description",
+	hashtags: [],
+	videoUrl: "test-url",
+	commentCount: 150,
+	diggCount: 500,
 }
+
 describe("#Card", () => {
 	it("Create integration tests", () => {
 		const { getByRole, getByTestId, getByText } = renderWithRouter(
@@ -28,8 +27,8 @@ describe("#Card", () => {
 		)
 		const imgElement = getByRole("img")
 		expect(imgElement).toBeInTheDocument()
-		expect(imgElement.getAttribute("src")).toBe(mockTrend.author.avatarThumb)
-		expect(getByText(mockTrend.desc)).toBeInTheDocument()
+		expect(imgElement.getAttribute("src")).toBe(mockTrend.authorMeta.avatar)
+		expect(getByText(mockTrend.text)).toBeInTheDocument()
 		expect(getByTestId("divider")).toBeInTheDocument()
 	})
 })

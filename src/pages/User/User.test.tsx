@@ -16,11 +16,13 @@ jest.mock("../../services/user/getUserInfo", () => ({
 const mockGetUserInfo = getUserInfo as jest.MockedFunction<typeof getUserInfo>
 let spy: jest.SpyInstance<void, [x: number, y: number]>
 const mockResponse = {
-	avatarMedium: "test-avatar-url",
-	nickname: "test-nickname",
-	uniqueId: "test-id",
-	verified: true,
-	signature: "test-signature",
+	user: {
+		avatarMedium: "test-avatar-url",
+		nickname: "test-nickname",
+		uniqueId: "test-id",
+		verified: true,
+		signature: "test-signature",
+	},
 }
 describe("#User", () => {
 	beforeAll(() => {
@@ -46,7 +48,7 @@ describe("#User", () => {
 		expect(spy).toBeCalledWith(0, 0)
 		expect(mockGetUserInfo).toBeCalledWith(mockUserId, expect.anything())
 		expect(queryAllByTestId("rectangle-preloader").length).toBeGreaterThan(2)
-		const avatarImage = await findByAltText(mockResponse.nickname)
+		const avatarImage = await findByAltText(mockResponse.user.nickname)
 		expect(avatarImage).toBeInTheDocument()
 		// expect(queryAllByTestId("rectangle-preloader").length).toBe(0)
 	})

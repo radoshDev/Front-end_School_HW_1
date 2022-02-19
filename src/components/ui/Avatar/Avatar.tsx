@@ -25,6 +25,8 @@ const S = {
 		border-radius: 50%;
 		overflow: hidden;
 		background-color: lightgray;
+		display: flex;
+		align-items: center;
 		img {
 			object-fit: cover;
 			object-position: center;

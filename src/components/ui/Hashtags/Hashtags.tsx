@@ -1,7 +1,7 @@
 import { ReactElement } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-import { TextExtra as Hashtag } from "../../../types/trendsTypes"
+import { Hashtag } from "../../../types/trendsTypes"
 
 type Props = {
 	hashtags?: Hashtag[]
@@ -10,9 +10,9 @@ type Props = {
 const Hashtags = ({ hashtags = [] }: Props): ReactElement => {
 	return (
 		<S.Hashtags>
-			{hashtags.map(({ hashtagId, hashtagName }) => (
-				<Link key={hashtagId} to={`tag/${hashtagName}`}>
-					#{hashtagName}
+			{hashtags.map(({ id, name }) => (
+				<Link key={id} to={`tag/${name}`}>
+					#{name}
 				</Link>
 			))}
 		</S.Hashtags>

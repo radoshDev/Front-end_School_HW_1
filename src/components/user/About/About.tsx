@@ -6,7 +6,7 @@ import VerifiedIcon from "../../ui/VerifiedIcon"
 
 type Props = {
 	isLoading?: boolean
-	user: UserInfo
+	user: UserInfo["user"]
 }
 
 const About: FC<Props> = ({ isLoading, user }) => {

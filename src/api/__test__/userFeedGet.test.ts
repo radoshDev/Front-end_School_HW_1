@@ -8,7 +8,7 @@ jest.mock("../api", () => {
 	}
 })
 
-describe("#trendsFeedGet", () => {
+describe.skip("#trendsFeedGet", () => {
 	it("should call apiGet with '/trending/feed'", () => {
 		const userId = "david-xs"
 		userFeedGet(userId)

@@ -1,4 +1,17 @@
-export type UserInfo = {
+export interface UserInfo {
+	user: User
+	stats: {
+		followerCount: number
+		followingCount: number
+		heart: number
+		heartCount: number
+		videoCount: number
+		diggCount: number
+	}
+	itemList: unknown[]
+}
+
+interface User {
 	id: string
 	shortId: string
 	uniqueId: string
@@ -13,10 +26,7 @@ export type UserInfo = {
 	ftc: boolean
 	relation: number
 	openFavorite: boolean
-	bioLink: {
-		link: string
-		risk: number
-	}
+	bioLink: BioLink
 	commentSetting: number
 	duetSetting: number
 	stitchSetting: number
@@ -24,7 +34,11 @@ export type UserInfo = {
 	secret: boolean
 	isADVirtual: boolean
 	roomId: string
-	extraInfo: Record<string, unknown>
+}
+
+interface BioLink {
+	link: string
+	risk: number
 }
 
 export type UserTrends = UserTrend[] & { error?: string }
@@ -54,7 +68,6 @@ export interface UserTrend {
 	duetEnabled: boolean
 	stitchEnabled: boolean
 	shareEnabled: boolean
-	stickersOnItem?: StickersOnItem[]
 	isAd: boolean
 	duetDisplay: number
 	stitchDisplay: number
@@ -82,7 +95,7 @@ export interface Video {
 	definition: string
 }
 
-export interface Author {
+interface Author {
 	id: string
 	uniqueId: string
 	nickname: string
@@ -100,7 +113,6 @@ export interface Author {
 	duetSetting: number
 	stitchSetting: number
 	privateAccount: boolean
-	isADVirtual: boolean
 }
 
 interface Music {
@@ -129,7 +141,7 @@ interface Challenge {
 	isCommerce: boolean
 }
 
-export interface Stats {
+interface Stats {
 	diggCount: number
 	shareCount: number
 	commentCount: number
@@ -140,7 +152,7 @@ interface DuetInfo {
 	duetFromId: string
 }
 
-export interface TextExtra {
+interface TextExtra {
 	awemeId: string
 	start: number
 	end: number
@@ -154,16 +166,11 @@ export interface TextExtra {
 	subType: number
 }
 
-export interface AuthorStats {
+interface AuthorStats {
 	followingCount: number
 	followerCount: number
 	heartCount: number
 	videoCount: number
 	diggCount: number
 	heart: number
-}
-
-interface StickersOnItem {
-	stickerType: number
-	stickerText: string[]
 }
